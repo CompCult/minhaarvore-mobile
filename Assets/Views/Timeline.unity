@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 432544322}
   - component: {fileID: 432544321}
   - component: {fileID: 432544320}
+  - component: {fileID: 432544323}
   m_Layer: 5
   m_Name: New Post
   m_TagString: Untagged
@@ -566,7 +567,7 @@ RectTransform:
   - {fileID: 1820757037}
   - {fileID: 416682172}
   m_Father: {fileID: 1499315763}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.10345834}
   m_AnchorMax: {x: 1, y: 0.29322916}
@@ -625,6 +626,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 432544318}
+--- !u!114 &432544323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 432544318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bade39e5b00acf54aab3f7e3d2105bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageField: {fileID: 1820757038}
 --- !u!1 &485956144
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +956,7 @@ GameObject:
   - component: {fileID: 595249303}
   - component: {fileID: 595249302}
   - component: {fileID: 595249301}
+  - component: {fileID: 595249304}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -995,6 +1009,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595249304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595249300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4518a1404939dcb4da1a85702ed743fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameField: {fileID: 0}
+  plantsField: {fileID: 0}
+  leavesField: {fileID: 0}
 --- !u!1 &613115298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1309,7 @@ GameObject:
   - component: {fileID: 761302586}
   - component: {fileID: 761302585}
   m_Layer: 5
-  m_Name: Submit Button
+  m_Name: Add Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2218,8 +2246,8 @@ RectTransform:
   - {fileID: 761302584}
   - {fileID: 1927852383}
   - {fileID: 485956145}
-  - {fileID: 2033366756}
   - {fileID: 432544319}
+  - {fileID: 2033366756}
   - {fileID: 1327043019}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -2543,7 +2571,7 @@ Prefab:
     - target: {fileID: 224117453748203188, guid: 2d73130a0460eb449901a9bb28d1ab1a,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 3.8027878
+      value: 3.8027954
       objectReference: {fileID: 0}
     - target: {fileID: 224117453748203188, guid: 2d73130a0460eb449901a9bb28d1ab1a,
         type: 2}
@@ -2584,6 +2612,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114987100086957976, guid: 2d73130a0460eb449901a9bb28d1ab1a,
+        type: 2}
+      propertyPath: m_Text
+      value: Linha do tempo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d73130a0460eb449901a9bb28d1ab1a, type: 2}

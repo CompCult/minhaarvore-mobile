@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ScreenController : MonoBehaviour 
 {
-	protected static string backScene, nextScene;
+	protected static string previousView, nextView;
 
 	public virtual void Update()
 	{
@@ -13,12 +13,12 @@ public class ScreenController : MonoBehaviour
 
 	public void LoadNextView()
 	{
-		LoadView(nextScene);
+		LoadView(nextView);
 	}
 
 	public void LoadPreviousView()
 	{
-		LoadView(backScene);
+		LoadView(previousView);
 	}
 
 	public void LoadView(string Scene) 

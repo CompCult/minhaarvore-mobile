@@ -28,6 +28,11 @@ public class UtilsService
 		return aux;
 	}
 
+	public static bool CheckName (string name)
+	{
+		return (name.Length > 3);
+	}
+
 	public static bool CheckEmail (string email)
 	{
 		return (email.Length > 5) && (email.Contains("@")) && (email.Split('@').Length > 1) && (email.Split('.').Length > 1);

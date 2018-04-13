@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 595249303}
   - component: {fileID: 595249302}
   - component: {fileID: 595249301}
+  - component: {fileID: 595249304}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -541,6 +542,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595249304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595249300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e45d012d6486b943853c6c7c3328c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameField: {fileID: 0}
+  plantsField: {fileID: 0}
+  leavesField: {fileID: 0}
 --- !u!1 &722270738
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +967,7 @@ Prefab:
     - target: {fileID: 224527840452688056, guid: f70c2433b61cf1c40bf643651a73b6ba,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224527840452688056, guid: f70c2433b61cf1c40bf643651a73b6ba,
         type: 2}
@@ -1433,15 +1448,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256242633031142, guid: 2d73130a0460eb449901a9bb28d1ab1a, type: 2}
-      propertyPath: m_Name
-      value: Header
-      objectReference: {fileID: 0}
-    - target: {fileID: 114987100086957976, guid: 2d73130a0460eb449901a9bb28d1ab1a,
-        type: 2}
-      propertyPath: m_Text
-      value: "In\xEDcio"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d73130a0460eb449901a9bb28d1ab1a, type: 2}

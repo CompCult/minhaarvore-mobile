@@ -12,7 +12,7 @@ public class LoginController : ScreenController
 		CheckSavedEmail();
 	}
 
-	private void CheckSavedEmail()
+	private void CheckSavedEmail ()
 	{
 		if (PlayerPrefs.HasKey("MinhaArvore:Email"))
 		{
@@ -20,7 +20,7 @@ public class LoginController : ScreenController
 		}
 	}
 
-	private void SaveEmail()
+	private void SaveEmail ()
 	{
 		PlayerPrefs.SetString("MinhaArvore:Email", emailField.text);
 	}
@@ -34,10 +34,11 @@ public class LoginController : ScreenController
 
 	private IEnumerator _Authenticate ()
 	{
+		LoadView("Home");
 		yield return null;
 	}
 
-	private bool CheckFields()
+	private bool CheckFields ()
 	{
 		return UtilsService.CheckEmail(emailField.text) && UtilsService.CheckPassword(passwordField.text);
 	}

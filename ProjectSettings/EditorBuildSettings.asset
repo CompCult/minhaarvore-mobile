@@ -14,3 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/Home.unity
     guid: 13d6e8c92d806bd4cbd48056b8242ced
+  - enabled: 1
+    path: Assets/Views/Plants.unity
+    guid: 3b7141f436f7e8e498192191c4b7ba4c
+  - enabled: 1
+    path: Assets/Views/Timeline.unity
+    guid: 1a77128c978765d4da0f3808efcf5d74
