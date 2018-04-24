@@ -553,9 +553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e45d012d6486b943853c6c7c3328c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameField: {fileID: 0}
-  plantsField: {fileID: 0}
-  leavesField: {fileID: 0}
+  nameField: {fileID: 1736057924}
+  plantsField: {fileID: 1573608250}
+  leavesField: {fileID: 1113937533}
 --- !u!1 &722270738
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: '-'
 --- !u!222 &1113937534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1266,7 +1266,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: '-'
 --- !u!222 &1573608251
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1310,8 +1310,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.05996, y: -495}
-  m_SizeDelta: {x: 645.2, y: 247.1}
+  m_AnchoredPosition: {x: 6.2, y: -495}
+  m_SizeDelta: {x: 913.2, y: 247.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736057924
 MonoBehaviour:
@@ -1338,7 +1338,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 97
+    m_MaxSize: 80
     m_Alignment: 1
     m_AlignByGeometry: 1
     m_RichText: 1

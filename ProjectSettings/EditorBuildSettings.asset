@@ -20,3 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/Timeline.unity
     guid: 1a77128c978765d4da0f3808efcf5d74
+  - enabled: 1
+    path: Assets/Views/Request.unity
+    guid: 110cba2b34a14a74592419f554546115
+  - enabled: 1
+    path: Assets/Views/Settings.unity
+    guid: a3c3fc794c0501c48a79fd2a6f6b5c00

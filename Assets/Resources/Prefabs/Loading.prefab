@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 114708229835702206}
   m_Layer: 5
   m_Name: Loading
-  m_TagString: Untagged
+  m_TagString: LoadingAlert
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
