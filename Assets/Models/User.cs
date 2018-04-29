@@ -8,10 +8,13 @@ public class User
 
 	public string 
 	name="",
+	type="",
+
 	picture="",
 	email="",
 	password="",
 	birth="",
+	institution="",
 	sex="",
 	phone="",
 	street="",

@@ -13,12 +13,22 @@ public static class PlantsService
 	private static Plant[] _plants;
 	public static Plant[] plants { get { return _plants; } }
 
-	public static WWW RequestTree (int typeID, byte[] photoArray, string plantName, string requesterName, string placeName, string sidewalkSize, int quantity)
+	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string placeName, string sidewalkSize, int quantity)
 	{
+		Debug.Log("photo: " + photoBase64);
+		Debug.Log("_user: " + UserService.user._id);
+		Debug.Log("_type: " + typeID);
+		Debug.Log("tree_name: " + plantName);
+		Debug.Log("requester_name: " + requesterName);
+		Debug.Log("place: " + placeName);
+		Debug.Log("quantity: " + quantity);
+		Debug.Log("location_lat: " + GPSService.location[0].ToString());
+		Debug.Log("location_lng: " + GPSService.location[1].ToString());
+
 		WWWForm requestForm = new WWWForm ();
 		requestForm.AddField ("_user", UserService.user._id);
 		requestForm.AddField ("_type", typeID);
-		requestForm.AddBinaryData ("photo", photoArray, "Photo.png", "image/png");
+		requestForm.AddField ("photo", photoBase64);
 		requestForm.AddField ("tree_name", plantName);
 		requestForm.AddField ("requester_name", requesterName);
 		requestForm.AddField ("place", placeName);

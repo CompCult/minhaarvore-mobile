@@ -34,7 +34,10 @@ public static class UserService
 		WWWForm registerForm = new WWWForm();
 		registerForm.AddField ("name", user.name);
 		registerForm.AddField ("email", user.email);
+		registerForm.AddField ("type", user.type);
 		registerForm.AddField ("password", user.password);
+		if (user.institution.Length > 1)
+			registerForm.AddField ("institution", user.institution);
 		
 		WebService.route = ENV.USERS_ROUTE;
 		WebService.action = ENV.REGISTER_ACTION;

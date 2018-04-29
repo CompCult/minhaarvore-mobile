@@ -43,7 +43,7 @@ public class RequestController : ScreenController
 			yield break;
 		}
 
-		byte[] photoArray = camService.photoArray;
+		string photoBase64 = camService.photoBase64;
 
 		int quantity = int.Parse(quantityField.text),
 			typeID = -1;
@@ -60,7 +60,7 @@ public class RequestController : ScreenController
 		if (place == "Calçada")
 			sidewalkSize = sideWalkSize.text;
 
-		WWW requestForm = PlantsService.RequestTree(typeID, photoArray, plant, requester, place, sidewalkSize, quantity);
+		WWW requestForm = PlantsService.RequestTree(typeID, photoBase64, plant, requester, place, sidewalkSize, quantity);
 
 		while (!requestForm.isDone)
 			yield return new WaitForSeconds(1f);
@@ -129,7 +129,7 @@ public class RequestController : ScreenController
 			GPSService.location[1] == 0.0)
 			message = "Ainda não obtivemos sua geolocalização. Aguarde alguns instantes e tente novamente.";
 
-		if (camService.photoArray == null)
+		if (camService.photoBase64 == null)
 			message = "Capture ou selecione a foto do local que deseja realizar o plantio.";
 
 		if (markedPlace != null)

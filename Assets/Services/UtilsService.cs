@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Net;
 using System.Globalization;
 using System.Collections;
@@ -36,6 +37,12 @@ public class UtilsService
 		string aux = _date.ToString("yyyy/MM/dd");
 
 		return aux;
+	}
+
+	public static string GetBase64 (byte[] data)
+	{
+		string base64string = Convert.ToBase64String (data);
+		return base64string;
 	}
 
 	public static bool CheckName (string name)

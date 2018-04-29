@@ -11,7 +11,7 @@ public class CameraCaptureService : MonoBehaviour {
 
 	public RawImage pickPreiveimage;
 
-	public byte[] photoArray;
+	public string photoBase64;
 
 	private int mode = 1;
 
@@ -97,7 +97,7 @@ public class CameraCaptureService : MonoBehaviour {
 
 		DestroyImmediate (pickPreiveimage.texture);
 		pickPreiveimage.texture = texture;
-		photoArray = texture.GetRawTextureData();
+		photoBase64 = System.Convert.ToBase64String(texture.EncodeToJPG());
 		texture = null;
 	}
 }
