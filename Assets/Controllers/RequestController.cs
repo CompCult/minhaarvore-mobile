@@ -5,16 +5,25 @@ using UnityEngine.UI;
 
 public class RequestController : ScreenController 
 {
+	public GameObject detailsCardObj, addressCardObj;
+
+	// Details
 	public GameObject sideWalkSizeObj;
-	public Dropdown plantTypesDropdown;
+	public Dropdown plantTypesDropdown, placeDropdown;
 	public InputField plantName, requesterName, quantityField, sideWalkSize;
-	public Toggle[] places;
+
+	// Address
+	public GameObject manualAddressObj, gpsImageObj;
+	public Text gpsStatus;
+	public InputField streetField, numberField, neighborhoodField, cityField, complementField, zipField;
+	public Dropdown stateDropdown;
 	public Toggle termsToggle;
 
+	// Extras
 	public CameraCaptureService camService;
-
-	private Toggle markedPlace;
-	private string CHECK_OK = "OK";
+	private string CHECK_OK = "OK",
+				   CURRENT_MENU = "DETAILS",
+				   CURRENT_GET_LOCATION = "MANUAL";
 
 	public void Start ()
 	{
@@ -23,6 +32,72 @@ public class RequestController : ScreenController
 
 		FillPlantTypesDropdown();
 		GPSService.StartGPS();
+	}
+
+	public void ToggleGetLocation()
+	{
+		if (CURRENT_GET_LOCATION == "MANUAL")
+		{
+			CURRENT_GET_LOCATION = "GPS";
+			gpsImageObj.SetActive(true);
+			manualAddressObj.SetActive(false);
+
+			StartCoroutine(_CheckGPS());
+		}
+		else
+		{
+			CURRENT_GET_LOCATION = "MANUAL";
+			gpsImageObj.SetActive(false);
+			manualAddressObj.SetActive(true);
+		}
+	}
+
+	private IEnumerator _CheckGPS()
+	{
+		bool mustCheckGPS = false;
+		GPSService.StartGPS();
+
+		if (!GPSService.IsActive())
+		{
+			gpsStatus.text = "Aguardando ativação do GPS no celular";
+			mustCheckGPS = true;
+		}
+		else if (GPSService.location[0] == 0.0 || GPSService.location[1] == 0.0)
+		{
+			GPSService.ReceivePlayerLocation();
+			gpsStatus.text = "Obtendo localização...";
+			mustCheckGPS = true;
+		}
+		else 
+		{
+			gpsStatus.text = "Localização obtida";
+		}
+
+		if (mustCheckGPS)
+		{
+			yield return new WaitForSeconds(2);
+			yield return StartCoroutine(_CheckGPS());
+		}
+		else
+		{
+			yield return null;
+		}
+	}
+
+	public void ToggleMenu()
+	{
+		if (CURRENT_MENU == "DETAILS")
+		{
+			CURRENT_MENU = "ADDRESS";
+			detailsCardObj.SetActive(false);
+			addressCardObj.SetActive(true);
+		}
+		else
+		{
+			CURRENT_MENU = "DETAILS";
+			detailsCardObj.SetActive(true);
+			addressCardObj.SetActive(false);
+		}
 	}
 
 	public void RequestTree ()
@@ -50,17 +125,22 @@ public class RequestController : ScreenController
 
 		string plant = plantName.text,
 			   requester = requesterName.text,
-			   place = markedPlace.GetComponentInChildren<Text>().text,
-			   sidewalkSize = null;
+			   place = placeDropdown.captionText.text,
+			   sidewalkSize = sideWalkSize.text,
+			   street = streetField.text,
+			   number = numberField.text,
+			   neighborhood = neighborhoodField.text,
+			   city = cityField.text,
+			   state = stateDropdown.captionText.text,
+			   complement = complementField.text,
+			   zipcode = zipField.text;
 
 		foreach (PlantType type in PlantsService.types)
 			if (type.name.Equals(plantTypesDropdown.captionText.text))
 				typeID = type._id;
 
-		if (place == "Calçada")
-			sidewalkSize = sideWalkSize.text;
-
-		WWW requestForm = PlantsService.RequestTree(typeID, photoBase64, plant, requester, place, sidewalkSize, quantity);
+		WWW requestForm = PlantsService.RequestTree(typeID, photoBase64, plant, requester, place, sidewalkSize, quantity,
+													street, number, neighborhood, city, state, complement, zipcode, CURRENT_GET_LOCATION);
 
 		while (!requestForm.isDone)
 			yield return new WaitForSeconds(1f);
@@ -81,28 +161,12 @@ public class RequestController : ScreenController
 		yield return null;
 	}
 
-	public void UpdatePlace (Toggle newPlace)
+	public void UpdatePlace ()
 	{
-		if (newPlace == markedPlace && newPlace.isOn == false)
-		{
-			newPlace.isOn = true;
-			return;
-		}
-
-		string name = newPlace.GetComponentInChildren<Text>().text;
-
-		if (name == "Calçada" && newPlace.isOn == true)
+		if (placeDropdown.captionText.text == "Calçada")
 			sideWalkSizeObj.SetActive(true);
-		else 
+		else
 			sideWalkSizeObj.SetActive(false);
-
-		foreach (Toggle place in places)
-		{
-			if (place != newPlace)
-				place.isOn = false;
-			else 
-				markedPlace = place;
-		}
 	}
 
 	private void FillPlantTypesDropdown ()
@@ -118,26 +182,28 @@ public class RequestController : ScreenController
 	private string CheckFields ()
 	{
 		string message = CHECK_OK;
-		bool placeSelected = false;
 
 		GPSService.ReceivePlayerLocation();
 
-		if (!GPSService.IsActive())
-			message = "Ative o GPS de seu celular antes de enviar uma solicitação.";
+		if  (CURRENT_GET_LOCATION == "GPS" &&
+			 (GPSService.location[0] == 0.0 || 
+			 GPSService.location[1] == 0.0 ||
+			 !GPSService.IsActive())
+			)
+			message = "Ainda não obtivemos sua geolocalização. Verifique se seu GPS está ligado.";
 
-		if (GPSService.location[0] == 0.0 || 
-			GPSService.location[1] == 0.0)
+		if  (CURRENT_GET_LOCATION == "GPS" &&
+			(GPSService.location[0] == 0.0 || 
+			GPSService.location[1] == 0.0 ||
+			!GPSService.IsActive()))
 			message = "Ainda não obtivemos sua geolocalização. Aguarde alguns instantes e tente novamente.";
 
 		if (camService.photoBase64 == null)
 			message = "Capture ou selecione a foto do local que deseja realizar o plantio.";
 
-		if (markedPlace != null)
-		{
-			string place = markedPlace.GetComponentInChildren<Text>().text;
-			if (place == "Calçada" && sideWalkSize.text.Length < 2)
-				message = "Escreva o tamanho de sua calçada em centímetros.";
-		}
+		if (placeDropdown.captionText.text == "Calçada" &&
+			sideWalkSize.text.Length < 2)
+			message = "Escreva o tamanho de sua calçada em centímetros.";
 
 		if (plantName.text.Length < 2)
 			message = "O nome da muda deve possuir, pelo menos, dois caracteres.";
@@ -150,13 +216,17 @@ public class RequestController : ScreenController
 		
 		if (quantityField.text.Length < 1 || int.Parse(quantityField.text) < 1)
 			message = "Você deve pedir, pelo menos, uma planta no campo de quantidade.";
-		
-		foreach (Toggle place in places)
-			if (place.isOn)
-				placeSelected = true;
 
-		if (!placeSelected)
-			message = "Selecione o local de plantio de sua nova muda.";
+		if (CURRENT_GET_LOCATION == "MANUAL")
+		{
+			if (streetField.text.Length < 5 ||
+				numberField.text.Length < 1 ||
+				neighborhoodField.text.Length < 3 ||
+				cityField.text.Length < 2 ||
+				zipField.text.Length < 8)
+			message = "Preencha seu endereço por completo.";
+		}
+
 
 		return message;
 	}

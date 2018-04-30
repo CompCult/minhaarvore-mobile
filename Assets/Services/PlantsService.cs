@@ -13,7 +13,8 @@ public static class PlantsService
 	private static Plant[] _plants;
 	public static Plant[] plants { get { return _plants; } }
 
-	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string placeName, string sidewalkSize, int quantity)
+	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string placeName, string sidewalkSize, int quantity, 
+								   string street, string number, string neighborhood, string city, string state, string complement, string zipcode, string locationType)
 	{
 		Debug.Log("photo: " + photoBase64);
 		Debug.Log("_user: " + UserService.user._id);
@@ -31,11 +32,25 @@ public static class PlantsService
 		requestForm.AddField ("photo", photoBase64);
 		requestForm.AddField ("tree_name", plantName);
 		requestForm.AddField ("requester_name", requesterName);
-		requestForm.AddField ("place", placeName);
 		requestForm.AddField ("quantity", quantity);
-		requestForm.AddField ("location_lat", GPSService.location[0].ToString());
-		requestForm.AddField ("location_lng", GPSService.location[1].ToString());
-		if (sidewalkSize != null)
+
+		if (locationType == "GPS")
+		{
+			requestForm.AddField ("location_lat", GPSService.location[0].ToString());
+			requestForm.AddField ("location_lng", GPSService.location[1].ToString());
+		}
+		else
+		{
+			requestForm.AddField ("street", street);
+			requestForm.AddField ("number", number);
+			requestForm.AddField ("neighborhood", neighborhood);
+			requestForm.AddField ("city", city);
+			requestForm.AddField ("state", state);
+			requestForm.AddField ("complement", complement);
+			requestForm.AddField ("zipcode", zipcode);
+		}
+
+		if (placeName == "Calçada")
 			requestForm.AddField ("sidewalk_size", sidewalkSize);
 
 		WebService.route = ENV.PLANTS_REQUEST_ROUTE;
