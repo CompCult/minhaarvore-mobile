@@ -7,17 +7,17 @@ public class TimelineController : ScreenController
 {
 	// Timeline Post Card
 	public GameObject postCard, noPostsCard;
-	public Image img;
+	public RawImage cardImg;
 	public Text authorName, date, message, likes;
 
 	// New post
 	public InputField newMessage;
-	public Texture2D image;
+	public RawImage newImage;
 
 	public void Start ()
 	{
 		previousView = "Home";
-		//StartCoroutine(_GetTimelinePosts());
+		StartCoroutine(_GetTimelinePosts());
 	}
 
 	public void AlertNoContent ()
@@ -55,7 +55,7 @@ public class TimelineController : ScreenController
     {
      	Vector3 position = postCard.transform.position;
 
-     	if (PlantsService.plants.Length > 0)
+     	if (TimelineServices.posts.Length > 0)
      	{
      		postCard.SetActive(true);
      		noPostsCard.SetActive(false);
@@ -68,9 +68,9 @@ public class TimelineController : ScreenController
 
      	foreach (Post post in TimelineServices.posts)
         {
-        	date.text = post.created_at;
+        	date.text = UtilsService.GetDate(post.created_at);
         	likes.text = post.points.ToString();
-        	message.text = post.text;
+        	message.text = post.text_msg;
 
             position = new Vector3(position.x, position.y, position.z);
             GameObject card = (GameObject) Instantiate(postCard, position, Quaternion.identity);

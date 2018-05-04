@@ -2,14 +2,15 @@
 public class Post 
 {
 	public int 
-	_id,
-	_user,
-	points;
+	_id=-1,
+	_user=-1,
+	points=-1;
 
-	public string 
-	image,
-	audio,
-	video,
-	text,
-	created_at;
+	public string
+	author_name="", 
+	image="",
+	audio="",
+	video="",
+	text_msg="",
+	created_at="";
 }

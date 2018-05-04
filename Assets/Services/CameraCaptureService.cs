@@ -62,6 +62,12 @@ public class CameraCaptureService : MonoBehaviour {
 		this.CamCap.playVideo();
 	}
 
+	public void resetPreview()
+	{
+		pickPreiveimage.texture = Resources.Load("Icons/seeding_pot") as Texture;
+		photoBase64 = null;
+	}
+
 
 	private void Completetd(string patha)
 	{

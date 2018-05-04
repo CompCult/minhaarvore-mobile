@@ -243,7 +243,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Rafaela/Documents/inovarg-mobile/compcult.keystore
+  AndroidKeystoreName: C:/Users/GCint/Documents/GitHub/inovarg-mobile/compcult.keystore
   AndroidKeyaliasName: inovarg
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

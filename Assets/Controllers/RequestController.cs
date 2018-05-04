@@ -30,6 +30,8 @@ public class RequestController : ScreenController
 		previousView = "Plants";
 		sideWalkSizeObj.SetActive(false);
 
+		camService.resetPreview();
+
 		FillPlantTypesDropdown();
 		GPSService.StartGPS();
 	}
@@ -191,12 +193,6 @@ public class RequestController : ScreenController
 			 !GPSService.IsActive())
 			)
 			message = "Ainda não obtivemos sua geolocalização. Verifique se seu GPS está ligado.";
-
-		if  (CURRENT_GET_LOCATION == "GPS" &&
-			(GPSService.location[0] == 0.0 || 
-			GPSService.location[1] == 0.0 ||
-			!GPSService.IsActive()))
-			message = "Ainda não obtivemos sua geolocalização. Aguarde alguns instantes e tente novamente.";
 
 		if (camService.photoBase64 == null)
 			message = "Capture ou selecione a foto do local que deseja realizar o plantio.";
