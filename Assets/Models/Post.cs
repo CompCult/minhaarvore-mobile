@@ -1,5 +1,5 @@
 [System.Serializable]
-public class Post 
+public class Post
 {
 	public int 
 	_id=-1,
@@ -7,8 +7,10 @@ public class Post
 	points=-1;
 
 	public string
-	author_name="", 
+	author_name="",
+	author_photo="", 
 	image="",
+	picture="",
 	audio="",
 	video="",
 	text_msg="",

@@ -30,7 +30,7 @@ public class RequestController : ScreenController
 		previousView = "Plants";
 		sideWalkSizeObj.SetActive(false);
 
-		camService.resetPreview();
+		camService.resetPreview("seeding_pot");
 
 		FillPlantTypesDropdown();
 		GPSService.StartGPS();

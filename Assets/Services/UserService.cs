@@ -65,7 +65,21 @@ public static class UserService
 		updateForm.AddField ("zipcode", user.zipcode);
 
 		WebService.route = ENV.USERS_ROUTE;
-		WebService.action = ENV.UPDATE_ACTION + "/" + user._id;
+		WebService.action = ENV.UPDATE_ACTION;
+		WebService.id = user._id.ToString();
+
+		return WebService.Post(updateForm);
+	}
+
+	public static WWW UpdatePoints (User user, int newPoints)
+	{
+		WWWForm updateForm = new WWWForm();
+		updateForm.AddField ("_id", user._id);
+		updateForm.AddField ("points", user.points + newPoints);
+
+		WebService.route = ENV.USERS_ROUTE;
+		WebService.action = ENV.UPDATE_ACTION;
+		WebService.id = user._id.ToString();
 
 		return WebService.Post(updateForm);
 	}

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Canvas
   - LoadingAlert
+  - Post
   layers:
   - Default
   - TransparentFX

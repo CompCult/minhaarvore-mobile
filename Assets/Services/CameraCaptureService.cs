@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,12 +63,16 @@ public class CameraCaptureService : MonoBehaviour {
 		this.CamCap.playVideo();
 	}
 
-	public void resetPreview()
+	public void resetPreview(string icon)
 	{
-		pickPreiveimage.texture = Resources.Load("Icons/seeding_pot") as Texture;
+		if (icon.Length <= 1)
+			icon = null;
+		else
+			icon = "Icons/" + icon;
+
+		pickPreiveimage.texture = Resources.Load(icon) as Texture;
 		photoBase64 = null;
 	}
-
 
 	private void Completetd(string patha)
 	{
@@ -84,9 +89,8 @@ public class CameraCaptureService : MonoBehaviour {
 	}
 
 
-	IEnumerator LoadImage(string path)
+	private IEnumerator LoadImage(string path)
 	{
-
 		var url = "file://" + path;
 		#if UNITY_EDITOR || UNITY_STANDLONE
 		url = "file:/"+path;
@@ -95,7 +99,9 @@ public class CameraCaptureService : MonoBehaviour {
 		var www = new WWW(url);
 		yield return www;
 
-		var texture = www.texture;
+		var texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+		texture.Apply();
+
 		if (texture == null)
 		{
 			Debug.LogError("Failed to load texture url:" + url);
