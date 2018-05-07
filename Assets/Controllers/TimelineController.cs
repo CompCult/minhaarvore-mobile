@@ -15,12 +15,10 @@ public class TimelineController : ScreenController
 	public InputField newMessageField;
 
 	// Other
-	public ScrollRect cardsList;
 	public CameraCaptureService camService;
 	public GameObject addButton, capturePhotoMenu;
 
-	private string STATUS_OK = "OK",
-				   LOADING_COMPLETE = "Untagged";
+	private string STATUS_OK = "OK";
 
 	public void Start ()
 	{
@@ -54,8 +52,6 @@ public class TimelineController : ScreenController
 
 			newPostCard.SetActive(true);
 			addButton.SetActive(false);
-
-			cardsList.normalizedPosition = new Vector2(0, 1);
 		}
 	}
 
@@ -158,7 +154,6 @@ public class TimelineController : ScreenController
         	postCardScript.UpdatePost(post);
         }
 
-        postCard.gameObject.tag = LOADING_COMPLETE;
         postCard.gameObject.SetActive(false);
         AlertsService.removeLoadingAlert();
     }

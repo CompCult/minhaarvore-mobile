@@ -12,6 +12,7 @@ public class PostCard : MonoBehaviour
 	public Text authorName, date, message, likes;
 
 	public Post post;
+	public GameObject loadingHolder;
 
 	public void LikePost ()
 	{
@@ -69,6 +70,7 @@ public class PostCard : MonoBehaviour
 		    Sprite sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
 
 		    image.sprite = sprite;
+		    Destroy(loadingHolder);
 		}
     }
 

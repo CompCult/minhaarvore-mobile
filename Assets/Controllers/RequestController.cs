@@ -28,6 +28,9 @@ public class RequestController : ScreenController
 	public void Start ()
 	{
 		previousView = "Plants";
+
+		detailsCardObj.SetActive(true);
+		addressCardObj.SetActive(false);
 		sideWalkSizeObj.SetActive(false);
 
 		camService.resetPreview("seeding_pot");

@@ -34,7 +34,7 @@ public class ScreenController : MonoBehaviour
         SceneManager.LoadScene(GetViewName());
 	}
 
-	private string GetViewName()
+	public string GetViewName()
 	{
 		Scene scene = SceneManager.GetActiveScene();
 		return scene.name;
