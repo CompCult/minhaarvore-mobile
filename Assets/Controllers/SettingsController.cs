@@ -222,7 +222,7 @@ public class SettingsController : ScreenController
 			message = "A senha deve conter, pelo menos, seis caracteres.";
 
 		if (passField.text.Length == 0)
-			message = "Por segurança, insira sua senha nos dados pessoais para confirmar suas mudanças.";
+			message = "Insira sua senha (ou uma nova senha) no campo específico para confirmar suas mudanças.";
 
 		return message;
 	}

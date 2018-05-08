@@ -5,6 +5,24 @@ public class ScreenController : MonoBehaviour
 {
 	protected static string previousView, nextView;
 
+	public void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+         
+	public void OnDisable()
+	{
+	    SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+	}
+
+	public void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+	{
+	    if (GetViewName() != "Login" && GetViewName() != "Register")
+			ShowFooterMenu();
+		else
+			DestroyFooterMenu();
+	}
+
 	public virtual void Update()
 	{
 		if (Input.GetKeyUp(KeyCode.Escape)) 
@@ -13,12 +31,14 @@ public class ScreenController : MonoBehaviour
 
 	public void LoadNextView()
 	{
-		LoadView(nextView);
+		if (nextView != null)
+			LoadView(nextView);
 	}
 
 	public void LoadPreviousView()
 	{
-		LoadView(previousView);
+		if (previousView != null)
+			LoadView(previousView);
 	}
 
 	public void LoadView(string Scene) 
@@ -38,6 +58,27 @@ public class ScreenController : MonoBehaviour
 	{
 		Scene scene = SceneManager.GetActiveScene();
 		return scene.name;
+	}
+
+	private void ShowFooterMenu()
+	{
+		GameObject[] instances = GameObject.FindGameObjectsWithTag("Footer");
+		if (instances.Length > 0)
+			return;
+
+		GameObject footerPrefab = (GameObject) Resources.Load("Prefabs/Footer Menu"),
+                   footerInstance = (GameObject) GameObject.Instantiate(footerPrefab, Vector3.zero, Quaternion.identity);
+        
+        footerInstance.transform.position = new Vector3(Screen.width/2, Screen.height/2, 0);
+	
+        DontDestroyOnLoad(footerInstance);
+	}
+
+	private void DestroyFooterMenu()
+	{
+		GameObject[] instances = GameObject.FindGameObjectsWithTag("Footer");
+		if (instances.Length > 0)
+			Destroy(instances[0]);
 	}
 }
 

@@ -26,3 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/Settings.unity
     guid: a3c3fc794c0501c48a79fd2a6f6b5c00
+  - enabled: 1
+    path: Assets/Views/Events.unity
+    guid: c8725846c3fa6004583cced8d41d7cde
+  - enabled: 1
+    path: Assets/Views/EventsRequests.unity
+    guid: e342554b631ea294b971ea8509bf2eb0
+  m_configObjects: {}

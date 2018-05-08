@@ -25,6 +25,7 @@ public class TimelineController : ScreenController
 		previousView = "Home";
 		userName.text = UserService.user.name;
 
+		postCard.SetActive(false);
 		newPostCard.SetActive(false);
 		addButton.SetActive(true);
 

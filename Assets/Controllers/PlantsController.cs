@@ -13,6 +13,8 @@ public class PlantsController : ScreenController
 	public void Start ()
 	{
 		previousView = "Login";
+		plantCard.SetActive(false);
+		
 		StartCoroutine(_GetPlantTypes());
 	}
 
