@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114076603504201644}
   - component: {fileID: 114835997207186886}
   m_Layer: 5
-  m_Name: Quizzes
+  m_Name: Groups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 114581095309334432}
   - component: {fileID: 114302467996104614}
   m_Layer: 5
-  m_Name: Missions
+  m_Name: Activities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,15 +564,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 114943170675902542}
+        m_MethodName: LoadViewAndMark
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Settings
+          m_StringArgument: Activities
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -694,7 +694,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quizzes
+  m_Text: Grupos
 --- !u!114 &114360898968153794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1034,7 +1034,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f82044610f4074c499a675daf9ef4338, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 145a8ae212687354488410d7a642be9f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1157,15 +1157,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 114943170675902542}
+        m_MethodName: LoadViewAndMark
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Settings
+          m_StringArgument: Groups
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1202,7 +1202,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Miss\xF5es"
+  m_Text: Atividades
 --- !u!114 &114871532088217342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1423,10 +1423,10 @@ RectTransform:
   m_Father: {fileID: 224942535208891838}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.38244572}
-  m_AnchorMax: {x: 1, y: 0.86289155}
-  m_AnchoredPosition: {x: 0.000015258789, y: 1.4199982}
-  m_SizeDelta: {x: 0, y: 2.7200012}
+  m_AnchorMin: {x: 0, y: 0.47444573}
+  m_AnchorMax: {x: 1, y: 0.776}
+  m_AnchoredPosition: {x: -0.00022888184, y: -0.5}
+  m_SizeDelta: {x: -0.00048828, y: -0.13000107}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224131634265036542
 RectTransform:
@@ -1652,8 +1652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.82600003, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.4559937, y: -0.099990845}
-  m_SizeDelta: {x: -9.320007, y: -0.19998169}
+  m_AnchoredPosition: {x: -3.02948, y: -0.099990845}
+  m_SizeDelta: {x: -8.173, y: -0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224722966469054908
 RectTransform:
@@ -1688,10 +1688,10 @@ RectTransform:
   m_Father: {fileID: 224200152118454792}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.49722242, y: 0}
   m_AnchorMax: {x: 0.66200006, y: 1}
-  m_AnchoredPosition: {x: -1.6099854, y: -0.1000061}
-  m_SizeDelta: {x: 3.6799927, y: -0.19998169}
+  m_AnchoredPosition: {x: -0.30000305, y: -0.1000061}
+  m_SizeDelta: {x: 0.5999999, y: -0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224942535208891838
 RectTransform:

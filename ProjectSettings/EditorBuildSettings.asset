@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/EventsRequests.unity
     guid: e342554b631ea294b971ea8509bf2eb0
+  - enabled: 1
+    path: Assets/Views/Groups.unity
+    guid: 8fc8e67bfcb7eb64598307e9950f7149
   m_configObjects: {}
