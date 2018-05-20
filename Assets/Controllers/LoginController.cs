@@ -59,7 +59,7 @@ public class LoginController : ScreenController
 		{
 			if (loginRequest.responseHeaders["STATUS"] == HTML.HTTP_400)
 				AlertsService.makeAlert("Senha incorreta", "Por favor, verifique se inseriu corretamente o e-mail e senha.", "OK");
-			else if (loginRequest.responseHeaders["STATUS"] == HTML.HTTP_404)
+			else if (loginRequest.responseHeaders["STATUS"] == HTML.HTTP_404 || loginRequest.responseHeaders["STATUS"] == HTML.HTTP_401)
 				AlertsService.makeAlert("Usuário não encontrado", "Por favor, verifique se inseriu corretamente o e-mail e senha.", "OK");
 			else
 				AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "Entendi");

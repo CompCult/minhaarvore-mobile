@@ -12,7 +12,7 @@ public class PostCard : MonoBehaviour
 	public Text authorName, date, message, likes;
 
 	public Post post;
-	public GameObject loadingHolder;
+	public GameObject loadingHolder, likeButton;
 
 	public void LikePost ()
 	{
@@ -42,6 +42,13 @@ public class PostCard : MonoBehaviour
 
 	public void UpdateFields()
 	{
+		User currentUser = UserService.user;
+
+		if (currentUser._id == post._user)
+			likeButton.SetActive(false);
+		else
+			likeButton.SetActive(true);
+
 		authorName.text = post.author_name;
 		date.text = UtilsService.GetDate(post.created_at);
 		message.text = post.text_msg;

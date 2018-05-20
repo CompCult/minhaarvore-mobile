@@ -250,16 +250,9 @@ public class GroupController : ScreenController
 		Debug.Log("Text: " + removeRequest.text);
 
 		if (removeRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
-		{
-			AlertsService.makeAlert("Sucesso", "O grupo foi excluído com sucesso. Você será levado(a) para a página de grupos.", "");
-			yield return new WaitForSeconds(3f);
 			LoadView("Groups");
-			yield return null;
-		}
 		else 
-		{
 			AlertsService.makeAlert("Falha ao remover", "Verifique sua conexão com a internet e tente novamente mais tarde.", "Entendi");
-		}
 
 		yield return null;
 	}

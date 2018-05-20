@@ -19,6 +19,9 @@ public class UtilsService
     public static string GetDate(string date)
 	{
 		// Transforms yyyy-mm-ddT000:000 to yyyy/mm/ddT000:000 and get the date only
+		if (date.Split('/').Length == 3)
+			return date;
+
 		date = date.Replace("-", "/");
 		date = date.Split('T')[0];
 

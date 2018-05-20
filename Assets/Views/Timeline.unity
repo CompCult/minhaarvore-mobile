@@ -1163,7 +1163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.79200006, y: 0.037}
   m_AnchorMax: {x: 0.98, y: 0.12972993}
-  m_AnchoredPosition: {x: -0.15999985, y: -1.4443359}
+  m_AnchoredPosition: {x: -0.16000366, y: -1.4443359}
   m_SizeDelta: {x: -1.3299999, y: -2.8899999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &416682173
@@ -1581,7 +1581,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8254717, g: 1, b: 0.8917925, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 0.5019608}
+    m_DisabledColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1938,6 +1938,7 @@ MonoBehaviour:
     text_msg: 
     created_at: 
   loadingHolder: {fileID: 191518838}
+  likeButton: {fileID: 567354607}
 --- !u!1 &638911929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,7 +2219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
+  m_Color: {r: 0.59607846, g: 0.59607846, b: 0.59607846, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2345,7 +2346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.055466123, y: 0.07520427}
   m_AnchorMax: {x: 0.9541077, y: 0.63435245}
-  m_AnchoredPosition: {x: -0.5553298, y: 9.6}
+  m_AnchoredPosition: {x: -0.55532837, y: 9.599976}
   m_SizeDelta: {x: -650.9, y: -620.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &804396349
@@ -3172,7 +3173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1227626177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3229,6 +3230,7 @@ MonoBehaviour:
     text_msg: 
     created_at: 
   loadingHolder: {fileID: 0}
+  likeButton: {fileID: 0}
 --- !u!114 &1227626179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5119,7 +5121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.59607846, g: 0.59607846, b: 0.59607846, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

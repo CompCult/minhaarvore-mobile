@@ -34,7 +34,10 @@ public class SettingsController : ScreenController
 		if (aux.email.Length > 0)
 			emailField.text = aux.email;
 		if (aux.birth.Length > 0)
+		{
+			Debug.Log("aux.birth: " + aux.birth);
 			birthField.text = UtilsService.GetDate(aux.birth);
+		}
 		if (aux.sex.Length > 0)
 			genreDropdown.value = FindIndexFromGenre(aux);
 		if (aux.phone.Length > 0)
@@ -194,24 +197,30 @@ public class SettingsController : ScreenController
 			if (phoneField.text.Length < 10)
 				message = "Insira um telefone num formato válido.";
 
-		if (!aux.birth.Equals(birthField.text) && aux.birth.Length > 0)
+		if (!aux.birth.Equals(birthField.text) && birthField.text.Length > 0)
 		{
 			if (birthField.text.Length != 10)
 				message = "Insira uma data de nascimento válida.";
 
-			int[] birthDate = Array.ConvertAll(birthField.text.Split('/'), s => int.Parse(s));
+			string[] birthDate = birthField.text.Split('/');
 
 			if (birthDate.Length != 3)
 				message = "Insira uma data da nascimento válida.";
+			else 
+			{
+				int year = birthDate[2].Length == 4 ? int.Parse(birthDate[2]) : 0,
+					month = birthDate[1].Length == 2 ? int.Parse(birthDate[1]) : 0,
+					day = birthDate[0].Length == 2 ? int.Parse(birthDate[0]) : 0;
 
-			if (birthDate[2] > System.DateTime.Now.Year)
-				message = "Verifique se inseriu o ano correto em seu registro.";
+				if (birthDate[2].Length >= 2 && year > System.DateTime.Now.Year)
+					message = "Verifique se inseriu o ano correto em seu registro.";
 
-			if (birthDate[1] > 12 || birthDate[1] < 1)
-				message = "Verifique se inseriu o mês correto em seu registro.";
+				if (birthDate[1].Length == 2 && month > 12 || month < 1)
+					message = "Verifique se inseriu o mês correto em seu registro.";
 
-			if (birthDate[0] > 31 || birthDate[0] < 1)
-				message = "Verifique se inseriu o dia correto em seu registro.";
+				if (birthDate[0].Length == 2 && day > 31 || day < 1)
+					message = "Verifique se inseriu o dia correto em seu registro.";
+			}
 		}
 
 		if (aux.sex.Length > 0) 
