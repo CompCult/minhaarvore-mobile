@@ -71,6 +71,14 @@ public static class UserService
 		return WebService.Post(updateForm);
 	}
 
+	public static WWW GetUser (int id)
+	{
+		WebService.route = ENV.USERS_ROUTE;
+		WebService.id = id.ToString();
+
+		return WebService.Get();
+	}
+
 	public static WWW UpdatePoints (User user, int newPoints)
 	{
 		WWWForm updateForm = new WWWForm();

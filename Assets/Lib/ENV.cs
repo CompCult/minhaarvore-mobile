@@ -17,14 +17,18 @@ PLANTS_REQUEST_ROUTE= "tree_requests",
 PLANTS_TYPES_ROUTE= "tree_types",
 POSTS_ROUTE = "posts",
 EVENTS_ROUTE = "appointment",
-EVENTS_REQUESTS_ROUTE = "appointment_requests";
+EVENTS_REQUESTS_ROUTE = "appointment_requests",
+GROUPS_ROUTE = "groups",
+GROUP_MEMBERS_ROUTE = "group_members";
 
 // ACTIONS
 public static string
 AUTH_ACTION = "auth",
+EMAIL_ACTION = "email",
+GROUPS_ACTION = "groups",
 REGISTER_ACTION = "register",
 UPDATE_ACTION = "update",
-QUERY_EXPLICIT_ACTION = "query",
-QUERY_ACTION = "fields?";
+REMOVE_ACTION = "remove",
+QUERY_ACTION = "query/fields?";
 
 }

@@ -59,7 +59,7 @@ public class UtilsService
 	{
 		return (password.Length >= 6) && (password.Length <= 64);
 	}
-
+	
 	public static Texture2D ResizeTexture(Texture2D pSource, string pFilterMode, float pScale)
 	{
 	    //*** Variables

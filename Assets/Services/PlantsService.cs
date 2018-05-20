@@ -84,7 +84,7 @@ public static class PlantsService
 	{
 		WebService.route = ENV.PLANTS_ROUTE;
 		WebService.action = ENV.QUERY_ACTION +
-							"user=" + userID;
+							"_user=" + userID;
 
 		return WebService.Get();
 	}

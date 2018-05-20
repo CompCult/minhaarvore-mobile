@@ -46,6 +46,7 @@ public class RegisterController : ScreenController
 		while (!registerForm.isDone)
 			yield return new WaitForSeconds(1f);
 
+		AlertsService.removeLoadingAlert();
 		Debug.Log("Header: " + registerForm.responseHeaders["STATUS"]);
 		Debug.Log("Text: " + registerForm.text);
 

@@ -40,8 +40,8 @@ public static class EventsService
 	public static WWW GetUserEvents (int userId)
 	{
 		WebService.route = ENV.EVENTS_REQUESTS_ROUTE;
-		WebService.action = ENV.QUERY_EXPLICIT_ACTION;
-		WebService.id = ENV.QUERY_ACTION + "user=" + userId.ToString();
+		WebService.action = ENV.QUERY_ACTION +
+							"_user=" + userId.ToString();
 
 		return WebService.Get();
 	}

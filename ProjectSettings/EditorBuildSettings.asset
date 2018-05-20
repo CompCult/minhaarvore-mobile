@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/Groups.unity
     guid: 8fc8e67bfcb7eb64598307e9950f7149
+  - enabled: 1
+    path: Assets/Views/Group.unity
+    guid: 2dfe74ff45018a54f805cf52cab511ca
   m_configObjects: {}
