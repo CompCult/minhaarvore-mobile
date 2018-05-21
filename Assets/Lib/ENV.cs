@@ -19,7 +19,9 @@ POSTS_ROUTE = "posts",
 EVENTS_ROUTE = "appointment",
 EVENTS_REQUESTS_ROUTE = "appointment_requests",
 GROUPS_ROUTE = "groups",
-GROUP_MEMBERS_ROUTE = "group_members";
+GROUP_MEMBERS_ROUTE = "group_members",
+QUIZZES_ROUTE = "quizzes",
+QUIZ_ANSWERS_ROUTE = "quiz_answers";
 
 // ACTIONS
 public static string
@@ -29,6 +31,8 @@ GROUPS_ACTION = "groups",
 REGISTER_ACTION = "register",
 UPDATE_ACTION = "update",
 REMOVE_ACTION = "remove",
+SEARCH_PUBLIC = "public?",
+SEARCH_PRIVATE = "private?",
 QUERY_ACTION = "query/fields?";
 
 }

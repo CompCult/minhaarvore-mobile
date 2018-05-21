@@ -2511,6 +2511,7 @@ MonoBehaviour:
     text_msg: 
     created_at: 
   loadingHolder: {fileID: 0}
+  likeButton: {fileID: 0}
 --- !u!114 &675475069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4291,7 +4292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1235000357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4531,6 +4532,7 @@ MonoBehaviour:
     text_msg: 
     created_at: 
   loadingHolder: {fileID: 0}
+  likeButton: {fileID: 0}
 --- !u!114 &1285555312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4795,6 +4797,7 @@ MonoBehaviour:
     text_msg: 
     created_at: 
   loadingHolder: {fileID: 0}
+  likeButton: {fileID: 0}
 --- !u!114 &1348266669
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,4 +38,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/Group.unity
     guid: 2dfe74ff45018a54f805cf52cab511ca
+  - enabled: 1
+    path: Assets/Views/Activities.unity
+    guid: eda66edd8b01dd64e816ddd9ebdc9698
+  - enabled: 1
+    path: Assets/Views/Quizzes.unity
+    guid: 802f140484a622547b033ebfc8cd2414
+  - enabled: 1
+    path: Assets/Views/Quiz.unity
+    guid: 3f6572ea63eaae6409f95b38a95bf878
   m_configObjects: {}
