@@ -35,7 +35,8 @@ public class EventsController : ScreenController
 		}
 		else 
 		{
-			AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "Entendi");
+			AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "");
+			yield return new WaitForSeconds(3f);
 			LoadView("Home");
 		}
 

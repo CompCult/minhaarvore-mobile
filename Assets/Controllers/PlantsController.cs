@@ -20,7 +20,7 @@ public class PlantsController : ScreenController
 
 	private IEnumerator _GetPlantTypes ()
 	{
-		AlertsService.makeLoadingAlert("Recebendo tipos");
+		AlertsService.makeLoadingAlert("Recebendo plantas");
 		WWW typesRequest = PlantsService.GetPlantTypes();
 
 		while (!typesRequest.isDone)
@@ -28,7 +28,6 @@ public class PlantsController : ScreenController
 
 		Debug.Log("Header: " + typesRequest.responseHeaders["STATUS"]);
 		Debug.Log("Text: " + typesRequest.text);
-		AlertsService.removeLoadingAlert();
 
 		if (typesRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
@@ -37,7 +36,8 @@ public class PlantsController : ScreenController
 		}
 		else 
 		{
-			AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "Entendi");
+			AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "");
+			yield return new WaitForSeconds(3f);
 			LoadView("Home");
 		}
 
@@ -46,7 +46,6 @@ public class PlantsController : ScreenController
 
 	private IEnumerator _GetPlants ()
 	{
-		AlertsService.makeLoadingAlert("Recebendo suas plantas");
 		WWW plantsRequest = PlantsService.GetUserPlants(UserService.user._id);
 
 		while (!plantsRequest.isDone)
@@ -63,7 +62,8 @@ public class PlantsController : ScreenController
 		}
 		else 
 		{
-			AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "Entendi");
+			AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "");
+			yield return new WaitForSeconds(3f);
 			LoadView("Home");
 		}
 
