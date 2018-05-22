@@ -21,7 +21,9 @@ EVENTS_REQUESTS_ROUTE = "appointment_requests",
 GROUPS_ROUTE = "groups",
 GROUP_MEMBERS_ROUTE = "group_members",
 QUIZZES_ROUTE = "quizzes",
-QUIZ_ANSWERS_ROUTE = "quiz_answers";
+QUIZ_ANSWERS_ROUTE = "quiz_answers",
+MISSIONS_ROUTE = "missions",
+MISSION_ANSWERS_ROUTE = "mission_answers";
 
 // ACTIONS
 public static string

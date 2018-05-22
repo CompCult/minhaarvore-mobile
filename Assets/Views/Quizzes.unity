@@ -920,12 +920,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: c532fd1a5e4e64e4e9455f87a132e049, type: 3}
+    m_Font: {fileID: 12800000, guid: 1ba591dfd01c64b48ba93136e5b4b942, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 25
-    m_MaxSize: 56
+    m_MaxSize: 45
     m_Alignment: 0
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -2186,7 +2186,7 @@ GameObject:
   - component: {fileID: 1336717151}
   - component: {fileID: 1336717150}
   m_Layer: 5
-  m_Name: List
+  m_Name: Icons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2551,7 +2551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0704689, y: 0.30142766}
   m_AnchorMax: {x: 0.8826966, y: 0.718229}
-  m_AnchoredPosition: {x: -0.19999695, y: -2.012001}
+  m_AnchoredPosition: {x: -0.19998169, y: -2.012001}
   m_SizeDelta: {x: -9, y: -1.5999999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773178843

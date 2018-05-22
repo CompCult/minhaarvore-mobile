@@ -47,4 +47,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/Quiz.unity
     guid: 3f6572ea63eaae6409f95b38a95bf878
+  - enabled: 1
+    path: Assets/Views/Missions.unity
+    guid: 7bf906c093412b9419786f632b0de1d9
+  - enabled: 1
+    path: Assets/Views/Mission.unity
+    guid: b0be726cc1a541f4584aa00965872185
   m_configObjects: {}

@@ -22,8 +22,8 @@ public class QuizCard : MonoBehaviour
 		date.text = "Até " + UtilsService.GetDate(quiz.end_time);
 		points.text = quiz.points.ToString();
 
-		if (quiz.description.Length > 50)
-			description.text = quiz.description.Substring(0, 47) + "...";
+		if (quiz.description.Length > 60)
+			description.text = quiz.description.Substring(0, 57) + "...";
 		else
 			description.text = quiz.description;
 

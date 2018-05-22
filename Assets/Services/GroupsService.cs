@@ -88,6 +88,18 @@ public static class GroupsService
 		_group = group;
 	}
 
+	public static List<string> GetGroupNames ()
+	{
+		List<string> groupNames = new List<string>();
+		foreach (Group group in _groups)
+		{
+			Debug.Log("Added: " + group.name);
+			groupNames.Add(group.name);
+		}
+
+		return groupNames;
+	}
+
 	public static bool CurrentUserIsAdmin()
 	{
 		User currentUser = UserService.user;
