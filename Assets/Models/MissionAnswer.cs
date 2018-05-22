@@ -5,8 +5,7 @@ public class MissionAnswer
 	_id,
 	_user,
 	_mission,
-	_group,
-	points;
+	_group;
 
 	public string 
 	status,
@@ -15,5 +14,6 @@ public class MissionAnswer
 	video,
 	text_msg,
 	location_lat,
-	location_lng;
+	location_lng,
+	created_at;
 }

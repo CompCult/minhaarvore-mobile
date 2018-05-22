@@ -828,9 +828,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.044239465, y: 0.21200001}
-  m_AnchorMax: {x: 0.863775, y: 1}
-  m_AnchoredPosition: {x: 0.3999939, y: -9.499962}
-  m_SizeDelta: {x: 0.9000015, y: -5.1}
+  m_AnchorMax: {x: 0.82900006, y: 0.85144776}
+  m_AnchoredPosition: {x: -1.5, y: -2.4999619}
+  m_SizeDelta: {x: -2.8999996, y: 8.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &422131533
 MonoBehaviour:
@@ -1340,10 +1340,10 @@ RectTransform:
   m_Father: {fileID: 1773178842}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.044239465, y: 0.21200001}
-  m_AnchorMax: {x: 0.863775, y: 0.93375516}
-  m_AnchoredPosition: {x: 0.4920044, y: -7}
-  m_SizeDelta: {x: 1.0849991, y: -0.1}
+  m_AnchorMin: {x: 0.044239465, y: 0.10923864}
+  m_AnchorMax: {x: 0.82900006, y: 0.93375516}
+  m_AnchoredPosition: {x: -1.3999939, y: -2}
+  m_SizeDelta: {x: -2.7000008, y: -10.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &628597492
 MonoBehaviour:
@@ -4228,7 +4228,7 @@ GameObject:
   - component: {fileID: 1913325887}
   - component: {fileID: 1913325886}
   m_Layer: 5
-  m_Name: My Quizzes Button
+  m_Name: My Missions Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4293,15 +4293,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ToggleNewGroupCard
-        m_Mode: 1
+      - m_Target: {fileID: 595249304}
+        m_MethodName: LoadView
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Request
+          m_StringArgument: Submissions
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -4447,9 +4447,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.86300004, y: 0.13347535}
-  m_AnchorMax: {x: 0.9794646, y: 0.87200004}
-  m_AnchoredPosition: {x: -0.93133545, y: -0.22009277}
-  m_SizeDelta: {x: -1.179966, y: 1.3800735}
+  m_AnchorMax: {x: 0.98825794, y: 0.9125247}
+  m_AnchoredPosition: {x: -0.3500061, y: -2.9999695}
+  m_SizeDelta: {x: -0.6999998, y: 4.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1926572620
 MonoBehaviour:

@@ -33,7 +33,7 @@ public class RequestController : ScreenController
 		addressCardObj.SetActive(false);
 		sideWalkSizeObj.SetActive(false);
 
-		camService.resetPreview("seeding_pot");
+		camService.resetFields("seeding_pot");
 
 		FillPlantTypesDropdown();
 		GPSService.StartGPS();

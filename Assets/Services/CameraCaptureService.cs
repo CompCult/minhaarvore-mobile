@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,8 @@ public class CameraCaptureService : MonoBehaviour {
 
 	public RawImage pickPreiveimage;
 
-	public string photoBase64;
+	public string photoBase64,
+				  videoBase64;
 
 	private int mode = 1;
 
@@ -21,6 +23,9 @@ public class CameraCaptureService : MonoBehaviour {
 		if (CamCap == null) {
 			CamCap = GameObject.FindObjectOfType<CameraCapture> ();
 		}
+
+		videoBase64 = null;
+		photoBase64 = null;
 
 		this.CamCap.CaptureVideoCompleted += new CameraCapture.MediaDelegate(this.Completetd);
 		this.CamCap.TakePhotoCompleted += new CameraCapture.MediaDelegate(this.Completetd);
@@ -63,7 +68,12 @@ public class CameraCaptureService : MonoBehaviour {
 		this.CamCap.playVideo();
 	}
 
-	public void resetPreview(string icon)
+	public void resetFields ()
+	{
+		resetFields("");
+	}
+
+	public void resetFields (string icon)
 	{
 		if (icon.Length <= 1)
 			icon = null;
@@ -77,9 +87,14 @@ public class CameraCaptureService : MonoBehaviour {
 	private void Completetd(string patha)
 	{
 		//pathText.text = pathText.text + "\n" + patha;
-		if (this.mode == 4|| this.mode ==3)
+		if (this.mode == 4|| this.mode == 3)
 		{
 			base.StartCoroutine(this.LoadImage(patha));
+		}
+
+		if (this.mode == 1 || this.mode == 2)
+		{
+			base.StartCoroutine(this.LoadVideo(patha));
 		}
 	}
 
@@ -95,7 +110,7 @@ public class CameraCaptureService : MonoBehaviour {
 		#if UNITY_EDITOR || UNITY_STANDLONE
 		url = "file:/"+path;
 		#endif
-		Debug.Log ("current path is " + url);
+		Debug.Log ("current photo path is " + url);
 		var www = new WWW(url);
 		yield return www;
 
@@ -111,5 +126,18 @@ public class CameraCaptureService : MonoBehaviour {
 		pickPreiveimage.texture = texture;
 		photoBase64 = System.Convert.ToBase64String(texture.EncodeToJPG());
 		texture = null;
+	}
+
+	private IEnumerator LoadVideo(string path)
+	{
+		var url = "file://" + path;
+		#if UNITY_EDITOR || UNITY_STANDLONE
+		url = "file:/"+path;
+		#endif
+		Debug.Log ("current video path is " + url);
+		var www = new WWW(url);
+		yield return www;
+
+		videoBase64 = System.Convert.ToBase64String(www.bytes);
 	}
 }

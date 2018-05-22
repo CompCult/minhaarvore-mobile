@@ -22,6 +22,7 @@ public class MissionController : ScreenController
 		missionName.text = currentMission.name;
 		missionDescription.text = currentMission.description;
 
+		ResetButtons ();
 		UpdateMissionInfo ();
 	}
 
@@ -38,9 +39,83 @@ public class MissionController : ScreenController
 
 	public void SendResponse ()
 	{
-		MissionsService.SendResponse();
+		Mission currentMission = MissionsService.mission;
+		MissionAnswer currentAnswer = MissionsService.missionAnswer;
+		
+		string message = null;
+
+		if (currentAnswer != null) 
+		{
+			if (currentMission.has_image && currentAnswer.image == null)
+				message = "Você precisa registrar uma foto antes de enviar essa resposta.";
+
+			if (currentMission.has_audio && currentAnswer.audio == null)
+				message = "Você precisa capturar um áudio antes de enviar essa resposta.";
+
+			if (currentMission.has_video && currentAnswer.video == null)
+				message = "Você precisa registrar um vídeo antes de enviar essa resposta.";
+
+			if (currentMission.has_text && currentAnswer.text_msg == null)
+				message = "Você precisa escrever um texto antes de enviar essa resposta.";
+
+			if (currentMission.has_geolocation && (currentAnswer.location_lat == null || currentAnswer.location_lng == null))
+				message = "Você precisa registrar sua geolocalização antes de enviar essa resposta.";
+		}
+		else
+		{
+			message = "Você precisa enviar os dados solicitados pela missão antes de enviar uma resposta.";
+		}
+
+		if (message == null)
+			StartCoroutine(_SendResponse());
+		else
+			AlertsService.makeAlert("Aviso", message, "Entendi");
 	}
 
+	private IEnumerator _SendResponse ()
+	{
+		AlertsService.makeLoadingAlert("Enviando resposta");
+
+		int currentUserId = UserService.user._id,
+			missionId = MissionsService.mission._id,
+			groupId = GetSelectedGroupId(senderTypeDropdown.captionText.text);
+
+		WWW responseRequest = MissionsService.SendResponse(currentUserId, missionId, groupId);
+
+		while (!responseRequest.isDone)
+			yield return new WaitForSeconds(0.1f);
+
+		Debug.Log("Header: " + responseRequest.responseHeaders["STATUS"]);
+		Debug.Log("Text: " + responseRequest.text);
+		AlertsService.removeLoadingAlert();
+
+		if (responseRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
+		{
+			Mission currentMission = MissionsService.mission;
+
+			if (currentMission.end_message != null && currentMission.end_message.Length > 0)
+				OpenModal("Final");
+			else
+			{
+				AlertsService.makeAlert("Resposta enviada", "Boa! Sua resposta foi enviada com sucesso. Você será redirecionado(a) para as missões.", "");
+				yield return new WaitForSeconds(5f);
+				LoadView("Missions");
+			}
+		}
+		else 
+		{
+			if (responseRequest.responseHeaders["STATUS"] == HTML.HTTP_400)
+				AlertsService.makeAlert("Senha incorreta", "Por favor, verifique se inseriu corretamente o e-mail e senha.", "OK");
+			else if (responseRequest.responseHeaders["STATUS"] == HTML.HTTP_404 || responseRequest.responseHeaders["STATUS"] == HTML.HTTP_401)
+				AlertsService.makeAlert("Usuário não encontrado", "Por favor, verifique se inseriu corretamente o e-mail e senha.", "OK");
+			else
+				AlertsService.makeAlert("Falha na conexão", "Tente novamente mais tarde.", "Entendi");
+		}
+
+		yield return null;
+	}
+
+	#pragma warning disable 0472
 	private void UpdateMissionInfo ()
 	{
 		if (currentMission.is_grupal != null && currentMission.is_grupal)
@@ -101,11 +176,29 @@ public class MissionController : ScreenController
 		yield return null;
 	}
 
+	private int GetSelectedGroupId (string groupName)
+	{
+		foreach (Group group in GroupsService.groups)
+			if (group.name == groupName)
+				return group._id;
+
+		return 0;
+	}
+
 	private void FillGroupsDropdown ()
 	{
 		senderTypeDropdown.ClearOptions();
 	    senderTypeDropdown.AddOptions(GroupsService.GetGroupNames());
 	    senderTypeDropdown.RefreshShownValue();
+	}
+
+	private void ResetButtons ()
+	{
+		imageButton.SetActive(false);
+		audioButton.SetActive(false);
+		videoButton.SetActive(false);
+		geolocationButton.SetActive(false);
+		textButton.SetActive(false);
 	}
 
 }

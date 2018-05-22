@@ -29,7 +29,7 @@ public class TimelineController : ScreenController
 		newPostCard.SetActive(false);
 		addButton.SetActive(true);
 
-		camService.resetPreview("");
+		camService.resetFields();
 		StartCoroutine(_GetTimelinePosts());
 	}
 
@@ -38,7 +38,7 @@ public class TimelineController : ScreenController
 		if (newPostCard.activeSelf)
 		{
 			if (camService.photoBase64 != null)
-				camService.resetPreview("");
+				camService.resetFields();
 			else
 			{
 				newPostCard.SetActive(false);

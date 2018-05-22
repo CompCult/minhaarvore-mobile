@@ -7,7 +7,8 @@ public static class ENV  {
 public static string 
 API_URL = "http://minha-arvore.herokuapp.com",
 GOOGLE_MAPS_KEY = "AIzaSyACtmxnxRymLJh3rhS0wkAaFsFgDNzXLDk",
-GOOGLE_MAPS_URL = "https://maps.googleapis.com/maps/api/staticmap?center=PLACE&zoom=15&size=600x300&maptype=terrain&markers=color:green%7CPLACE";
+GOOGLE_MAPS_URL = "https://maps.googleapis.com/maps/api/staticmap?center=PLACE&zoom=15&size=600x300&maptype=terrain&markers=color:green%7CPLACE",
+GOOGLE_MAPS_COORD_URL = "https://maps.googleapis.com/maps/api/staticmap?center=PLACE&zoom=19&size=550x500&maptype=terrain&markers=color:green%7CPLACE";
 
 // ROUTES
 public static string
@@ -23,7 +24,7 @@ GROUP_MEMBERS_ROUTE = "group_members",
 QUIZZES_ROUTE = "quizzes",
 QUIZ_ANSWERS_ROUTE = "quiz_answers",
 MISSIONS_ROUTE = "missions",
-MISSION_ANSWERS_ROUTE = "mission_answers";
+MISSION_ANSWERS_ROUTE = "missions_answers";
 
 // ACTIONS
 public static string

@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Views/Mission.unity
     guid: b0be726cc1a541f4584aa00965872185
+  - enabled: 1
+    path: Assets/Views/Submissions.unity
+    guid: a99b24b896a9f7f41ac1ffbd864936a1
   m_configObjects: {}

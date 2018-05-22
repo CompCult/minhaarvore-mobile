@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ModalGPS : ModalGeneric {
-
+public class ModalGPS : ModalGeneric 
+{
 	public Text gpsStatus;
-	public Button pickLocationButton;
+	private string modalType = "GPS";
 
 	public void Start ()
 	{
-		pickLocationButton.interactable = false;
+		sendButton.interactable = false;
 		StartCoroutine(_CheckGPS());
+	}
+
+	public void SaveGeolocation ()
+	{
+		string lat = GPSService.location[0].ToString(),
+			   lng = GPSService.location[1].ToString();
+
+		MissionsService.UpdateMissionAnswer(modalType, lat, lng);
+
+		Destroy();
 	}
 
 	private IEnumerator _CheckGPS()
@@ -27,13 +37,13 @@ public class ModalGPS : ModalGeneric {
 		else if (GPSService.location[0] == 0.0 || GPSService.location[1] == 0.0)
 		{
 			GPSService.ReceivePlayerLocation();
-			gpsStatus.text = "Sintonizando...";
+			gpsStatus.text = "Obtendo localização...";
 			mustCheckGPS = true;
 		}
 		else 
 		{
-			gpsStatus.text = "Rastreado";
-			pickLocationButton.interactable = true;
+			gpsStatus.text = "Dispositivo localizado";
+			sendButton.interactable = true;
 		}
 
 		if (mustCheckGPS)
