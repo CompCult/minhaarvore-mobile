@@ -26,17 +26,6 @@ public class MissionController : ScreenController
 		UpdateMissionInfo ();
 	}
 
-	public void OpenModal (string modalName)
-	{
-		string modalPath = "Prefabs/Modal" + modalName;
-
-        GameObject modalPrefab = (GameObject) Resources.Load(modalPath),
-                   modalInstance = (GameObject) GameObject.Instantiate(modalPrefab, Vector3.zero, Quaternion.identity);
-        
-        modalInstance.transform.SetParent (GameObject.FindGameObjectsWithTag("Canvas")[0].transform, false);
-        modalInstance.transform.position = new Vector3(Screen.width/2, Screen.height/2, 0);
-	}
-
 	public void SendResponse ()
 	{
 		Mission currentMission = MissionsService.mission;

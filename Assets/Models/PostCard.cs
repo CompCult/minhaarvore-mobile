@@ -8,7 +8,7 @@ public class PostCard : MonoBehaviour
 {
 	#pragma warning disable 0108
 
-	public Image image;
+	public RawImage profilePic, imagePost;
 	public Text authorName, date, message, likes;
 
 	public Post post;
@@ -54,31 +54,59 @@ public class PostCard : MonoBehaviour
 		message.text = post.text_msg;
 		likes.text = post.points.ToString();
 
-		StartCoroutine(UpdateImage());
+		StartCoroutine(_GetAuthorPhoto());
+		StartCoroutine(_GetPostImage());
 	}
 
-	private IEnumerator UpdateImage ()
-    {
-    	UnityWebRequest www = UnityWebRequestTexture.GetTexture(post.picture);
-		www.SetRequestHeader("Accept", "image/*");
-		
-		var async = www.SendWebRequest();
-		while (!async.isDone)
-		    yield return null;
+	private IEnumerator _GetAuthorPhoto ()
+	{
+		string photoUrl = post.author_photo;
+		Texture2D texture;
 
-		if (!www.isNetworkError)
+		if (photoUrl == null || photoUrl.Length < 1)
 		{
-		    yield return new WaitForEndOfFrame();
-
-		    byte[] results = www.downloadHandler.data;
-		    Texture2D texture = new Texture2D(100, 100);
-
-		    texture.LoadImage(results);
-		    Sprite sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
-
-		    image.sprite = sprite;
-		    Destroy(loadingHolder);
+			texture = UtilsService.GetDefaultPhoto();
 		}
+		else
+		{
+			Debug.Log ("current author photo url is " + photoUrl);
+			var www = new WWW(photoUrl);
+			yield return www;
+
+			texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+		}
+
+		if (texture == null)
+			texture = UtilsService.GetDefaultPhoto();
+
+		profilePic.texture = texture;
+	}
+
+	private IEnumerator _GetPostImage ()
+    {
+    	string photoUrl = post.picture;
+    	Texture2D texture;
+
+		if (photoUrl == null || photoUrl.Length < 1)
+			yield break;
+
+		Debug.Log ("current post photo url is " + photoUrl);
+		var www = new WWW(photoUrl);
+		yield return www;
+
+		if (www.responseHeaders["STATUS"] != HTML.HTTP_200)
+			yield break;
+
+		texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+
+		if (texture == null)
+		{
+			Debug.LogError("Failed to load texture url: " + photoUrl);
+			yield break;
+		}
+
+		Destroy(loadingHolder);
+		imagePost.texture = texture;
     }
 
 	private IEnumerator _ChangePostPoints (int newPoints, bool updateUser)

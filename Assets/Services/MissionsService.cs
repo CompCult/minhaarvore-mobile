@@ -24,7 +24,7 @@ public static class MissionsService
 		WebService.route = ENV.MISSIONS_ROUTE;
 		WebService.action = ENV.SEARCH_PRIVATE +
 							"user_id=" + userId +
-							"&mission_id=" + secretCode;
+							"&secret_code=" + secretCode;
 
 		return WebService.Get();
 	}

@@ -17,12 +17,19 @@ public static class AlertsService
         alertInstance.transform.SetParent (GameObject.FindGameObjectsWithTag("Canvas")[0].transform, false);
         alertInstance.transform.position = new Vector3(Screen.width/2, Screen.height/2, 0);
 
+        Button actionButton = GameObject.Find("Button").GetComponent<Button>();
         Text titleText = GameObject.Find("Alert Tittle Text").GetComponent<Text>(),
              messageText = GameObject.Find("Alert Text").GetComponent<Text>(),
              buttonText = GameObject.Find("Alert Button Text").GetComponent<Text>();
 
         titleText.text = title.ToUpper();
         messageText.text = message;
+
+        if (button.Length > 1)
+            actionButton.interactable = true;
+        else
+            actionButton.interactable = false;
+
         buttonText.text = button.ToUpper();
 	}
 

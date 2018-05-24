@@ -18,7 +18,10 @@ public class GroupCard : MonoBehaviour
 		name.text = group.name;
 
 		if (group.description != null)
-        	description.text = group.description;
+			if (group.description.Length >= 23)
+				description.text = group.description.Substring(0, 20) + "...";
+			else
+        		description.text = group.description;
         else
         	description.text = "Sem descrição";
 	}

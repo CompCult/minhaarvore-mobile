@@ -80,21 +80,22 @@ public class CameraCaptureService : MonoBehaviour {
 		else
 			icon = "Icons/" + icon;
 
-		pickPreiveimage.texture = Resources.Load(icon) as Texture;
+		Texture2D texture = Resources.Load(icon) as Texture2D;
+		pickPreiveimage.texture = texture;
 		photoBase64 = null;
+		videoBase64 = null;
 	}
 
 	private void Completetd(string patha)
 	{
 		//pathText.text = pathText.text + "\n" + patha;
-		if (this.mode == 4|| this.mode == 3)
+		if (mode == 4 || mode == 3)
 		{
-			base.StartCoroutine(this.LoadImage(patha));
+			StartCoroutine(LoadImage(patha));
 		}
-
-		if (this.mode == 1 || this.mode == 2)
+		else if (this.mode == 1 || this.mode == 2)
 		{
-			base.StartCoroutine(this.LoadVideo(patha));
+			StartCoroutine(LoadVideo(patha));
 		}
 	}
 
@@ -122,7 +123,6 @@ public class CameraCaptureService : MonoBehaviour {
 			Debug.LogError("Failed to load texture url:" + url);
 		}
 
-		DestroyImmediate (pickPreiveimage.texture);
 		pickPreiveimage.texture = texture;
 		photoBase64 = System.Convert.ToBase64String(texture.EncodeToJPG());
 		texture = null;

@@ -46,16 +46,8 @@ public class MissionsController : ScreenController
 
 		if (missionRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			MissionsService.UpdateMissions(missionRequest.text);
-			
-			if (MissionsService.missions.Length != 1)
-				AlertsService.makeAlert("Não encontrado", "Não encontramos nenhuma missão com esse código secreto. Por favor, verifique o código e tente novamente.", "OK");
-			else
-			{
-				MissionsService.UpdateMission(MissionsService.missions[0]);
-				LoadView("Mission");
-			}
-
+			MissionsService.UpdateMission(missionRequest.text);
+			LoadView("Mission");
 		}
 		else 
 		{

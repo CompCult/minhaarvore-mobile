@@ -9,7 +9,7 @@ public class ModalImage : ModalGeneric
 
 	public void Start ()
 	{
-		camService.resetFields("seeding_pot");
+		camService.resetFields("pot_seeding");
 	}
 
 	public void Update ()

@@ -11,6 +11,7 @@ public class EventsRequestsController : ScreenController
 	{
 		previousView = "Events";
 		eventCard.SetActive(false);
+		noEventsCard.SetActive(false);
 
 		StartCoroutine(_GetUserEvents());
 	}
@@ -42,6 +43,8 @@ public class EventsRequestsController : ScreenController
 
 	private void CreateEventRequestsCards ()
     {
+    	int eventsFound = 0;
+
      	Vector3 position = eventCard.transform.position;
 
      	if (EventsService.eventsRequests.Length > 0)
@@ -59,6 +62,8 @@ public class EventsRequestsController : ScreenController
 
         	if (indexEvt == null)
         		continue;
+        	else
+        		eventsFound += 1;
 
         	position = new Vector3(position.x, position.y, position.z);
             GameObject card = (GameObject) Instantiate(eventCard, position, Quaternion.identity);
@@ -67,6 +72,9 @@ public class EventsRequestsController : ScreenController
         	EventCard evtCard = card.GetComponent<EventCard>();
         	evtCard.UpdateEventWithStatus(indexEvt, evtReq);
         }
+
+       	if (eventsFound == 0)
+       		noEventsCard.SetActive(true);
 
         eventCard.gameObject.SetActive(false);
         AlertsService.removeLoadingAlert();

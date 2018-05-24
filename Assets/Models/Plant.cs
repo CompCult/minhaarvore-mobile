@@ -8,7 +8,10 @@ public class Plant
 
 	public string 
 	name,
-	geolocation,
+	location_lat,
+	location_lng,
 	planting_date,
 	status;
+
+	public PlantRequest request;
 }

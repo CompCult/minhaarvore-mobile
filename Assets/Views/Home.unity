@@ -288,10 +288,10 @@ RectTransform:
   m_Father: {fileID: 1020726552}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.24615572}
+  m_AnchorMin: {x: 0, y: 0.15914573}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -6.7321167}
-  m_SizeDelta: {x: 0.000061035156, y: -5.7991943}
+  m_AnchoredPosition: {x: 0, y: 36.49995}
+  m_SizeDelta: {x: 0, y: 95.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &375025718
 MonoBehaviour:
@@ -556,6 +556,7 @@ MonoBehaviour:
   nameField: {fileID: 1736057924}
   plantsField: {fileID: 1573608250}
   leavesField: {fileID: 1113937533}
+  profilePic: {fileID: 1115454468}
 --- !u!1 &722270738
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,10 +587,10 @@ RectTransform:
   m_Father: {fileID: 1321377834}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2, y: 0.43219596}
-  m_AnchorMax: {x: 0.42322236, y: 0.7923919}
-  m_AnchoredPosition: {x: -7.5, y: 15.3}
-  m_SizeDelta: {x: 2.5, y: 12.7}
+  m_AnchorMin: {x: 0.21229644, y: 0.45154276}
+  m_AnchorMax: {x: 0.40559283, y: 0.8326723}
+  m_AnchoredPosition: {x: 3, y: -0.685997}
+  m_SizeDelta: {x: -1.5, y: 1.6999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722270740
 MonoBehaviour:
@@ -599,25 +600,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 722270738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d562986b2145fa84a8309bfc8f2243cf, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_Texture: {fileID: 2800000, guid: 8dbc83e208a5cdb41b4afae2d289deef, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!222 &722270741
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -811,8 +811,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1115454467}
   - component: {fileID: 1115454469}
-  - component: {fileID: 1115454468}
   - component: {fileID: 1115454470}
+  - component: {fileID: 1115454468}
   m_Layer: 5
   m_Name: Photo
   m_TagString: Untagged
@@ -846,25 +846,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1115454466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4ed96aa1353b8524e9b32bed82424769, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_Texture: {fileID: 2800000, guid: 50846dd0acca0a748b8f894dc0a1f751, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!222 &1115454469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1239,7 +1238,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gabriel Cintra
+  m_Text: Nome
 --- !u!222 &1736057925
 CanvasRenderer:
   m_ObjectHideFlags: 0

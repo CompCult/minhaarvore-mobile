@@ -45,15 +45,13 @@ public static class UserService
 		return WebService.Post(registerForm);
 	}
 
-	public static WWW Update (User user)
+	public static WWW Update (User user, string photoBase64)
 	{
 		WWWForm updateForm = new WWWForm();
 		updateForm.AddField ("name", user.name);
 		updateForm.AddField ("email", user.email);
 		updateForm.AddField ("sex", user.sex);
 		updateForm.AddField ("phone", user.phone);
-
-		Debug.Log("passed birth:" + user.birth);
 		updateForm.AddField ("birth", UtilsService.GetInverseDate(user.birth));
 		updateForm.AddField ("password", user.password);
 		updateForm.AddField ("street", user.street);
@@ -63,6 +61,12 @@ public static class UserService
 		updateForm.AddField ("city", user.city);
 		updateForm.AddField ("state", user.state);
 		updateForm.AddField ("zipcode", user.zipcode);
+
+		if (photoBase64 != null)
+		{
+			Debug.Log ("sending picture to update");
+			updateForm.AddField ("picture", photoBase64);
+		}
 
 		WebService.route = ENV.USERS_ROUTE;
 		WebService.action = ENV.UPDATE_ACTION;

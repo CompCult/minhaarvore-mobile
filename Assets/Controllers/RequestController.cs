@@ -32,8 +32,10 @@ public class RequestController : ScreenController
 		detailsCardObj.SetActive(true);
 		addressCardObj.SetActive(false);
 		sideWalkSizeObj.SetActive(false);
+		if (!UserService.user.IsMinor())
+			termsToggle.gameObject.SetActive(false);
 
-		camService.resetFields("seeding_pot");
+		camService.resetFields("pot_seeding");
 
 		FillPlantTypesDropdown();
 		GPSService.StartGPS();
@@ -210,7 +212,7 @@ public class RequestController : ScreenController
 		if (requesterName.text.Length < 3)
 			message = "O nome do solicitante deve possuir, pelo menos, três caracteres.";
 		
-		if (!termsToggle.isOn)
+		if (UserService.user.IsMinor() && !termsToggle.isOn)
 			message = "Você deve concordar com o termo de ciência de pedidos no Minha Árvore.";
 		
 		if (quantityField.text.Length < 1 || int.Parse(quantityField.text) < 1)

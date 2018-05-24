@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224436776591197016}
   - component: {fileID: 222018505890296664}
   - component: {fileID: 114933765553209980}
-  - component: {fileID: 114919515853086420}
+  - component: {fileID: 114940739312460880}
   m_Layer: 5
   m_Name: Alert
   m_TagString: Untagged
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114919515853086420}
+      - m_Target: {fileID: 114940739312460880}
         m_MethodName: Destroy
         m_Mode: 1
         m_Arguments:
@@ -409,17 +409,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114919515853086420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1110660641806112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d65af06a1336344923075f7dc80f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114933765553209980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,6 +436,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114940739312460880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1110660641806112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2f1bc6013f7be448e1fda5452b7eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114948924154947416
 MonoBehaviour:
   m_ObjectHideFlags: 1

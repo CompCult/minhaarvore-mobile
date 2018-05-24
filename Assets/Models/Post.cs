@@ -9,7 +9,6 @@ public class Post
 	public string
 	author_name="",
 	author_photo="", 
-	image="",
 	picture="",
 	audio="",
 	video="",

@@ -18,7 +18,7 @@ public static class QuizzesService
 		WebService.route = ENV.QUIZZES_ROUTE;
 		WebService.action = ENV.SEARCH_PRIVATE +
 							"user_id=" + userId +
-							"&quiz_id=" + secretCode;
+							"&secret_code=" + secretCode;
 
 		return WebService.Get();
 	}

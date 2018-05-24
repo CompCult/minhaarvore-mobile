@@ -62,6 +62,22 @@ public class UtilsService
 	{
 		return (password.Length >= 6) && (password.Length <= 64);
 	}
+
+	public static Texture2D GetDefaultPhoto ()
+	{
+		var texture = Resources.Load("Icons/pot_seeding") as Texture2D;
+		texture.Apply();
+
+		return texture;
+	}
+
+	public static Texture2D GetDefaultProfilePhoto ()
+	{
+		var texture = Resources.Load("Icons/seeding_icon") as Texture2D;
+		texture.Apply();
+
+		return texture;
+	}
 	
 	public static Texture2D ResizeTexture(Texture2D pSource, string pFilterMode, float pScale)
 	{

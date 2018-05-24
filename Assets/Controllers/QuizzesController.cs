@@ -46,16 +46,8 @@ public class QuizzesController : ScreenController
 
 		if (quizRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			QuizzesService.UpdateQuizzes(quizRequest.text);
-			
-			if (QuizzesService.quizzes.Length != 1)
-				AlertsService.makeAlert("Não encontrado", "Não encontramos nenhum quiz com esse código secreto. Por favor, verifique o código e tente novamente.", "OK");
-			else
-			{
-				QuizzesService.UpdateQuiz(QuizzesService.quizzes[0]);
-				LoadView("Quiz");
-			}
-
+			QuizzesService.UpdateQuiz(quizRequest.text);
+			LoadView("Quiz");
 		}
 		else 
 		{

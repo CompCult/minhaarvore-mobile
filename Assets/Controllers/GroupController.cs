@@ -19,7 +19,7 @@ public class GroupController : ScreenController
 	public InputField newMessage;
 
 	private Color COLOR_WHITE = new Color(1f, 1f, 1f),
-			  COLOR_GREY = new Color(0.8773585f, 0.8773585f, 0.8773585f);
+			  COLOR_GREY = new Color(0.9150943f, 0.9150943f, 0.9150943f);
 
 	public void Start ()
 	{
@@ -32,6 +32,9 @@ public class GroupController : ScreenController
 		cancelEdit.gameObject.SetActive(false);
 		editGroup.gameObject.SetActive(false);
 		confirmationCard.gameObject.SetActive(false);
+	    newMemberBtn.gameObject.SetActive(true);
+		newMessageBtn.gameObject.SetActive(false);
+		removeGroupBtn.gameObject.SetActive(false);
 
 		UpdateFields();
 		StartCoroutine(_GetGroupMembers());
@@ -297,7 +300,7 @@ public class GroupController : ScreenController
 
     private bool CheckMessageFields()
     {
-    	if (newMessage.text.Length < 15)
+    	if (newMessage.text.Length < 3)
 			return false;
 
 		return true;

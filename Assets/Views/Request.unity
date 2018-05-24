@@ -3274,6 +3274,7 @@ MonoBehaviour:
   pathText: {fileID: 95803061}
   pickPreiveimage: {fileID: 1562025746}
   photoBase64: 
+  videoBase64: 
 --- !u!1 &617724033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,8 +3857,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Eu e/ou meus respons\xE1veis est\xE3o cientes do meu pedido pelo aplicativo
-    Minha \xC1rvore."
+  m_Text: "Confirmo que meus pais ou respons\xE1veis est\xE3o cientes de meu pedido
+    pelo aplicativo Minha \xC1rvore."
 --- !u!222 &772396191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4685,7 +4686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &857592080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7180,13 +7181,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: d562986b2145fa84a8309bfc8f2243cf, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8dbc83e208a5cdb41b4afae2d289deef, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7754,7 +7755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1823759331
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleton: 1
   minimumHeight: 200
+  startInPopupMode: 1
   clearCommandAfterExecution: 1
   receiveLogcatLogsInAndroid: 0
   logcatArguments: 

@@ -17,45 +17,27 @@ public class SettingsController : ScreenController
 	public InputField streetField, numberField, neighborhoodField, cityField, complementField, zipField;
 	public Dropdown stateDropdown;
 
+	// Photo
+	public CameraCaptureService camService;
+	public GameObject takePhotoButton, cancelPhotoButton;
+
 	private string STATUS_OK = "OK";
+	private Texture originalPhoto;
 
 	public void Start ()
 	{
 		previousView = "Home";
+
+		camService.resetFields("seeding_icon");
+
+		StartCoroutine(_CheckPhotoStatus());
 		FillInputFields();
 	}
 
-	private void FillInputFields()
+	public void CancelPhoto ()
 	{
-		User aux = UserService.user;
-
-		if (aux.name.Length > 0)
-			nameField.text = aux.name;
-		if (aux.email.Length > 0)
-			emailField.text = aux.email;
-		if (aux.birth.Length > 0)
-		{
-			Debug.Log("aux.birth: " + aux.birth);
-			birthField.text = UtilsService.GetDate(aux.birth);
-		}
-		if (aux.sex.Length > 0)
-			genreDropdown.value = FindIndexFromGenre(aux);
-		if (aux.phone.Length > 0)
-			phoneField.text = aux.phone;
-		if (aux.street.Length > 0)
-			streetField.text = aux.street;
-		if (aux.neighborhood.Length > 0)
-			neighborhoodField.text = aux.neighborhood;
-		if (aux.complement.Length > 0)
-			complementField.text = aux.complement;
-		if (aux.zipcode.Length > 0)
-			zipField.text = aux.zipcode;
-		if (aux.city.Length > 0)
-			cityField.text = aux.city;
-		if (aux.state.Length > 0)
-			stateDropdown.value = FindIndexFromState(aux);
-		if (aux.number != null)
-			numberField.text = aux.number.ToString();
+		camService.resetFields("seeding_icon");
+		camService.pickPreiveimage.texture = originalPhoto;
 	}
 
 	public void ToggleDataToShow()
@@ -74,9 +56,7 @@ public class SettingsController : ScreenController
 
 	public void Logout ()
 	{
-		PlayerPrefs.DeleteKey("MinhaArvore:Conectar");
 		PlayerPrefs.DeleteKey("MinhaArvore:Email");
-		PlayerPrefs.DeleteKey("MinhaArvore:Senha");
 
 		LoadView("Login");
 	}
@@ -99,6 +79,12 @@ public class SettingsController : ScreenController
 		}
 
 		User aux = UserService.user;
+
+		if (camService.photoBase64 != null)
+			UserService.user.profilePicture = camService.pickPreiveimage.texture as Texture2D;
+
+		if (!aux.name.Equals(nameField.text))
+			aux.name = nameField.text;
 
 		if (!aux.name.Equals(nameField.text))
 			aux.name = nameField.text;
@@ -140,9 +126,61 @@ public class SettingsController : ScreenController
 		StartCoroutine(_SaveChanges(aux));
 	}
 
+	private IEnumerator _CheckPhotoStatus()
+	{
+		if (camService.photoBase64 != null)
+		{
+			takePhotoButton.SetActive(false);
+			cancelPhotoButton.SetActive(true);
+		}
+		else
+		{
+			takePhotoButton.SetActive(true);
+			cancelPhotoButton.SetActive(false);
+		}
+
+		yield return new WaitForSeconds(1f);
+		yield return StartCoroutine(_CheckPhotoStatus());
+	}
+
+	private void FillInputFields()
+	{
+		User aux = UserService.user;
+
+		camService.pickPreiveimage.texture = UserService.user.profilePicture;
+		originalPhoto = camService.pickPreiveimage.texture;
+
+		if (aux.name.Length > 0)
+			nameField.text = aux.name;
+		if (aux.email.Length > 0)
+			emailField.text = aux.email;
+		if (aux.birth.Length > 0)
+			birthField.text = UtilsService.GetDate(aux.birth);
+		if (aux.sex.Length > 0)
+			genreDropdown.value = FindIndexFromGenre(aux);
+		if (aux.phone.Length > 0)
+			phoneField.text = aux.phone;
+		if (aux.street.Length > 0)
+			streetField.text = aux.street;
+		if (aux.neighborhood.Length > 0)
+			neighborhoodField.text = aux.neighborhood;
+		if (aux.complement.Length > 0)
+			complementField.text = aux.complement;
+		if (aux.zipcode.Length > 0)
+			zipField.text = aux.zipcode;
+		if (aux.city.Length > 0)
+			cityField.text = aux.city;
+		if (aux.state.Length > 0)
+			stateDropdown.value = FindIndexFromState(aux);
+		if (aux.number != null)
+			numberField.text = aux.number.ToString();
+	}
+
 	private IEnumerator _SaveChanges (User aux)
 	{
-		WWW updateResponse = UserService.Update(aux);
+		string photoBase64 = camService.photoBase64;
+
+		WWW updateResponse = UserService.Update(aux, photoBase64);
 
 		while (!updateResponse.isDone)
 			yield return new WaitForSeconds(0.1f);

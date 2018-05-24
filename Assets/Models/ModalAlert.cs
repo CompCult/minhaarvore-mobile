@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlertScript : MonoBehaviour 
+public class ModalAlert : MonoBehaviour 
 {
 	public void Destroy ()
 	{

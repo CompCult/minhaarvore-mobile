@@ -93,7 +93,6 @@ public class DemoScene : MonoBehaviour {
 			Debug.LogError("Failed to load texture url:" + url);
 		}
 
-		DestroyImmediate (pickPreiveimage.texture);
 		pickPreiveimage.texture = texture;
 		texture = null;
 	}

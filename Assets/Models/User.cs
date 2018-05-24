@@ -1,4 +1,7 @@
-﻿[System.Serializable]
+﻿using System;
+using UnityEngine;
+
+[System.Serializable]
 public class User 
 {
 	public int 
@@ -9,7 +12,6 @@ public class User
 	public string 
 	name="",
 	type="",
-
 	picture="",
 	email="",
 	password="",
@@ -26,4 +28,25 @@ public class User
 	zipcode="",
 	banned_until="",
 	created_at="";
+
+	public Texture2D profilePicture;
+
+	public bool IsMinor()
+	{
+		if (birth.Length != 10)
+			return false;
+
+		string[] date = birth.Split('/');
+		if (date.Length == 3)
+		{
+			DateTime todaysDate = DateTime.Now.Date;
+			int minimumYear = todaysDate.Year - 18;
+			int birthYear = int.Parse(date[2]);
+
+			if (birthYear > minimumYear)
+				return true;
+		}
+
+		return false;
+	}
 }

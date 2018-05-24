@@ -12,6 +12,7 @@ GOOGLE_MAPS_COORD_URL = "https://maps.googleapis.com/maps/api/staticmap?center=P
 
 // ROUTES
 public static string
+GENERAL_ROUTE = "general",
 USERS_ROUTE = "users",
 PLANTS_ROUTE = "trees",
 PLANTS_REQUEST_ROUTE= "tree_requests",
@@ -28,6 +29,7 @@ MISSION_ANSWERS_ROUTE = "missions_answers";
 
 // ACTIONS
 public static string
+MAINTENANCE_ACTION = "in_maintenance",
 AUTH_ACTION = "auth",
 EMAIL_ACTION = "email",
 GROUPS_ACTION = "groups",

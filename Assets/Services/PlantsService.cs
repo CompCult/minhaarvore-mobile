@@ -13,6 +13,9 @@ public static class PlantsService
 	private static Plant[] _plants;
 	public static Plant[] plants { get { return _plants; } }
 
+	private static Plant _plant;
+	public static Plant plant { get { return _plant; } }
+
 	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string placeName, string sidewalkSize, int quantity, 
 								   string street, string number, string neighborhood, string city, string state, string complement, string zipcode, string locationType)
 	{
@@ -87,6 +90,11 @@ public static class PlantsService
 							"_user=" + userID;
 
 		return WebService.Get();
+	}
+
+	public static void UpdateLocalPlant (Plant plant)
+	{
+		_plant = plant;
 	}
 
 	public static void UpdateLocalPlants (string json)

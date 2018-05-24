@@ -8,8 +8,6 @@ public class PlantsController : ScreenController
 	public GameObject plantCard, noPlantsCard;
 	public GameObject statusApproved, statusPendent, statusRejected;
 
-	public Text plantName, plantType, plantDate;
-
 	public void Start ()
 	{
 		previousView = "Login";
@@ -81,31 +79,12 @@ public class PlantsController : ScreenController
 
      	foreach (Plant plant in PlantsService.plants)
         {
-        	plantName.text = plant.name;
-
-        	if (plant.planting_date != null)
-        	{
-        		statusApproved.SetActive(true);
-        		plantDate.text = "Plantada em " + plant.planting_date;
-        	}
-        	else
-        	{
-        		statusPendent.SetActive(true);
-        		plantDate.text = "Pendente";
-        	}
-
-        	foreach (PlantType type in PlantsService.types)
-        	{
-        		if (type._id == plant._type)
-        		{
-        			plantType.text = type.name;
-        			break;
-        		}
-        	}
-
             position = new Vector3(position.x, position.y, position.z);
             GameObject card = (GameObject) Instantiate(plantCard, position, Quaternion.identity);
         	card.transform.SetParent(GameObject.Find("List").transform, false);
+
+        	PlantCard plantCardScript = card.GetComponent<PlantCard>();
+        	plantCardScript.UpdatePlantCard(plant);
         }
 
         plantCard.gameObject.SetActive(false);
