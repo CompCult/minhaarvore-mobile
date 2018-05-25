@@ -1,3 +1,5 @@
+using UnityEngine;
+
 [System.Serializable]
 public class Plant 
 {
@@ -13,5 +15,5 @@ public class Plant
 	planting_date,
 	status;
 
-	public PlantRequest request;
+	public PlantRequest _request;
 }

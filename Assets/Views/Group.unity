@@ -397,8 +397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.058664754, y: 0.808}
   m_AnchorMax: {x: 0.93638116, y: 0.83245665}
-  m_AnchoredPosition: {x: -69.29199, y: 17.026731}
-  m_SizeDelta: {x: 23.47998, y: 4.600006}
+  m_AnchoredPosition: {x: -71.2, y: 17.117}
+  m_SizeDelta: {x: 23.48, y: 4.3662}
   m_Pivot: {x: -2.582819, y: 3.9203827}
 --- !u!114 &154163886
 MonoBehaviour:
@@ -905,6 +905,7 @@ MonoBehaviour:
       zipcode: 
       banned_until: 
       created_at: 
+      profilePicture: {fileID: 0}
   crownIcon: {fileID: 1948420496}
   toggleAdmin: {fileID: 432105574}
   removeButton: {fileID: 316543074}
@@ -2493,7 +2494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5caa9ccba1c651d439e0177690021d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  profilePic: {fileID: 0}
+  imagePost: {fileID: 0}
   authorName: {fileID: 0}
   date: {fileID: 0}
   message: {fileID: 0}
@@ -2504,7 +2506,6 @@ MonoBehaviour:
     points: -1
     author_name: 
     author_photo: 
-    image: 
     picture: 
     audio: 
     video: 
@@ -4514,7 +4515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5caa9ccba1c651d439e0177690021d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  profilePic: {fileID: 0}
+  imagePost: {fileID: 0}
   authorName: {fileID: 0}
   date: {fileID: 0}
   message: {fileID: 0}
@@ -4525,7 +4527,6 @@ MonoBehaviour:
     points: -1
     author_name: 
     author_photo: 
-    image: 
     picture: 
     audio: 
     video: 
@@ -4779,7 +4780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5caa9ccba1c651d439e0177690021d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  profilePic: {fileID: 0}
+  imagePost: {fileID: 0}
   authorName: {fileID: 0}
   date: {fileID: 0}
   message: {fileID: 0}
@@ -4790,7 +4792,6 @@ MonoBehaviour:
     points: -1
     author_name: 
     author_photo: 
-    image: 
     picture: 
     audio: 
     video: 

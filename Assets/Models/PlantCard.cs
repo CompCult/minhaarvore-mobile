@@ -29,14 +29,14 @@ public class PlantCard : MonoBehaviour
 		this.plant = plant;
 		name.text = plant.name;
 
-		if (plant.request != null && plant.request.status != null)
+		if (plant._request != null && plant._request.status != null)
 		{
-			if (plant.request.status == STATUS_APPROVED)
+			if (plant._request.status == STATUS_APPROVED)
 			{
 				statusApproved.SetActive(true);
 				date.text = STATUS_APPROVED;
 			}
-			else if (plant.request.status == STATUS_REJECTED)
+			else if (plant._request.status == STATUS_REJECTED)
 			{
 				statusRejected.SetActive(true);
 				date.text = STATUS_REJECTED;

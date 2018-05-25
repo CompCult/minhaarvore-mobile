@@ -79,6 +79,8 @@ public class PlantsController : ScreenController
 
      	foreach (Plant plant in PlantsService.plants)
         {
+        	Debug.Log("Request Status: " + plant._request.status);
+
             position = new Vector3(position.x, position.y, position.z);
             GameObject card = (GameObject) Instantiate(plantCard, position, Quaternion.identity);
         	card.transform.SetParent(GameObject.Find("List").transform, false);

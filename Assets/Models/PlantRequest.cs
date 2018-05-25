@@ -7,8 +7,9 @@ public class PlantRequest
 	_type,
 	sidewalk_size;
 
-	public string 
+	public string
 	tree_name,
+	name,
 	location_lat,
 	location_lng,
 	quantity,

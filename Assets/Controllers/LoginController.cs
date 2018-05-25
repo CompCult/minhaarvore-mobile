@@ -7,14 +7,17 @@ public class LoginController : ScreenController
 {
 	public InputField emailField, passwordField;
 	public Button loginButton, registerButton;
+	public Text loginText;
 
 	private string IN_MAINTENANCE = "true";
 
 	public void Start ()
 	{
 		loginButton.interactable = false;
+		loginText.text = "Conectando";
 		registerButton.interactable = false;
 
+		CheckAuthenticatedUser();
 		StartCoroutine(_CheckMaintenance());
 	}
 
@@ -50,17 +53,19 @@ public class LoginController : ScreenController
 			if (checkRequest.text == IN_MAINTENANCE)
 			{
 				AlertsService.makeAlert("EM MANUTENÇÃO", "O Minha Árvore está em manutenção no momento. Por favor, tente novamente mais tarde.", "Entendi");
+				loginText.text = "Em manutenção";
 			}
 			else
 			{
+				loginText.text = "Entrar";
 				loginButton.interactable = true;
 				registerButton.interactable = true;
-				CheckAuthenticatedUser();
 			}
 		}
 		else 
 		{
 			AlertsService.makeAlert("FALHA NA CONEXÃO", "Houve uma falha na conexão com o Minha Árvore. Por favor, tente novamente mais tarde.", "OK");
+			loginText.text = "Falha na conexão";
 		}
 
 		yield return null;

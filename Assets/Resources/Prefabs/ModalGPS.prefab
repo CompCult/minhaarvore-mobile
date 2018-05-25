@@ -493,17 +493,17 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: c532fd1a5e4e64e4e9455f87a132e049, type: 3}
-    m_FontSize: 3
+    m_Font: {fileID: 12800000, guid: 559575047014f0a4bad5b146d1c27651, type: 3}
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 13
-    m_Alignment: 3
+    m_MaxSize: 300
+    m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Registrar localiza\xE7\xE3o"
 --- !u!114 &114890494762821720
@@ -558,7 +558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sendButton: {fileID: 114276330688703472}
   gpsStatus: {fileID: 114557883912192584}
-  pickLocationButton: {fileID: 114276330688703472}
 --- !u!222 &222290581592870178
 CanvasRenderer:
   m_ObjectHideFlags: 1

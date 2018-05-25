@@ -135,10 +135,11 @@ public class GroupController : ScreenController
 
 		AlertsService.makeLoadingAlert("Enviando mensagem");
 
+		User currentUser = UserService.user;
 		Group currentGroup = GroupsService.group;
 		string message = newMessage.text;
 
-		WWW messageRequest = GroupsService.SendMessage(currentGroup, message);
+		WWW messageRequest = GroupsService.SendMessage(currentGroup, currentUser, message);
 
 		while (!messageRequest.isDone)
 			yield return new WaitForSeconds(0.1f);

@@ -61,10 +61,11 @@ public static class GroupsService
 		return WebService.Get();
 	}
 
-	public static WWW SendMessage (Group group, string message)
+	public static WWW SendMessage (Group group, User user, string message)
 	{
 		WWWForm requestForm = new WWWForm ();
 		requestForm.AddField ("_group", group._id);
+		requestForm.AddField ("author", user.name);
 		requestForm.AddField ("message", message);
 
 		WebService.route = ENV.GROUPS_ROUTE;

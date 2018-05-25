@@ -16,7 +16,7 @@ PlayerSettings:
   productName: "Minha \xC1rvore"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.06179715, g: 0.9338235, b: 0.3925658, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0, g: 1, b: 0.37931037, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -117,7 +117,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 1.0.1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -152,9 +152,9 @@ PlayerSettings:
   applicationIdentifier:
     Android: net.compcult.inovarg
   buildNumber: {}
-  AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 23
-  AndroidTargetSdkVersion: 0
+  AndroidBundleVersionCode: 101
+  AndroidMinSdkVersion: 16
+  AndroidTargetSdkVersion: 27
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1

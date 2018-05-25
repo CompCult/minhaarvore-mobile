@@ -191,8 +191,10 @@ public class SettingsController : ScreenController
 
 		if (updateResponse.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			AlertsService.makeAlert("PERFIL ATUALIZADO", "Suas informações foram atualizadas com sucesso.", "OK");
+			AlertsService.makeAlert("PERFIL ATUALIZADO", "Suas informações foram atualizadas com sucesso.", "");
 			UserService.UpdateLocalUser(aux);
+			yield return new WaitForSeconds(3f);
+			ReloadView();
 		}
 		else
 		{
