@@ -13,7 +13,9 @@ public class HomeController : ScreenController
 
 	public void Start ()
 	{
+		currentTab = "Home";
 		photoTexture = UserService.user.profilePicture;
+
 		UpdateAndShowUser ();
 	}
 

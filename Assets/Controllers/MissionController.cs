@@ -12,6 +12,10 @@ public class MissionController : ScreenController
 	public Dropdown senderTypeDropdown;
 
 	private Mission currentMission;
+	private MissionAnswer currentAnswer;
+	private bool canSend = false;
+	private Color COLOR_GREEN = new Color(0.07450981f, 0.7568628f, 0.3333333f),
+		  	  	  COLOR_RED = new Color(1f, 0.4392157f, 0.4392157f);
 
 	public void Start ()
 	{
@@ -22,15 +26,17 @@ public class MissionController : ScreenController
 		missionName.text = currentMission.name;
 		missionDescription.text = currentMission.description;
 
+		currentMission = MissionsService.mission;
+		currentAnswer = MissionsService.missionAnswer;
+
 		ResetButtons ();
 		UpdateMissionInfo ();
+
+		StartCoroutine(_CheckResponses());
 	}
 
 	public void SendResponse ()
 	{
-		Mission currentMission = MissionsService.mission;
-		MissionAnswer currentAnswer = MissionsService.missionAnswer;
-		
 		string message = null;
 
 		if (currentAnswer != null) 
@@ -59,6 +65,66 @@ public class MissionController : ScreenController
 			StartCoroutine(_SendResponse());
 		else
 			AlertsService.makeAlert("Aviso", message, "Entendi");
+	}
+
+	#pragma warning disable 0472
+	private IEnumerator _CheckResponses ()
+	{
+		canSend = true;
+
+		if (currentMission.is_grupal != null && currentMission.is_grupal)
+			if (GroupsService.groups == null || GroupsService.groups.Length < 1)
+				canSend = false;
+
+		if (currentMission.has_image != null && currentMission.has_image)
+			if (currentAnswer.image == null)
+			{
+				canSend = false;
+				imageButton.GetComponent<Image>().color = COLOR_RED;
+			}
+			else
+				imageButton.GetComponent<Image>().color = COLOR_GREEN;
+
+		if (currentMission.has_audio != null && currentMission.has_audio)
+			if (currentAnswer.audio == null)
+			{
+				canSend = false;
+				audioButton.GetComponent<Image>().color = COLOR_RED;
+			}
+			else
+				audioButton.GetComponent<Image>().color = COLOR_GREEN;
+
+		if (currentMission.has_video != null && currentMission.has_video)
+			if (currentAnswer.video == null)
+			{
+				canSend = false;
+				videoButton.GetComponent<Image>().color = COLOR_RED;
+			}
+			else
+				videoButton.GetComponent<Image>().color = COLOR_GREEN;
+
+		if (currentMission.has_text != null && currentMission.has_text)
+			if (currentAnswer.text_msg == null)
+			{
+				canSend = false;
+				textButton.GetComponent<Image>().color = COLOR_RED;
+			}
+			else
+				textButton.GetComponent<Image>().color = COLOR_GREEN;
+
+		if (currentMission.has_geolocation != null && currentMission.has_geolocation)
+			if (currentAnswer.location_lat == null || currentAnswer.location_lng == null)
+			{
+				canSend = false;
+				geolocationButton.GetComponent<Image>().color = COLOR_RED;
+			}
+			else
+				geolocationButton.GetComponent<Image>().color = COLOR_GREEN;
+
+		sendButton.interactable = canSend;
+
+		yield return new WaitForSeconds(2f);
+		yield return StartCoroutine(_CheckResponses());
 	}
 
 	private IEnumerator _SendResponse ()
@@ -109,8 +175,6 @@ public class MissionController : ScreenController
 	{
 		if (currentMission.is_grupal != null && currentMission.is_grupal)
 			StartCoroutine(_GetGroups());
-		else
-			sendButton.interactable = true;
 
 		if (currentMission.has_image != null && currentMission.has_image)
 			imageButton.SetActive(true);
@@ -150,8 +214,6 @@ public class MissionController : ScreenController
 				yield return new WaitForSeconds(5f);
 				LoadView("Missions");
 			}
-			else
-				sendButton.interactable = true;
 
 			FillGroupsDropdown();
 		}

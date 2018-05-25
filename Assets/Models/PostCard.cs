@@ -65,7 +65,7 @@ public class PostCard : MonoBehaviour
 
 		if (photoUrl == null || photoUrl.Length < 1)
 		{
-			texture = UtilsService.GetDefaultPhoto();
+			texture = UtilsService.GetDefaultProfilePhoto();
 		}
 		else
 		{
@@ -77,7 +77,7 @@ public class PostCard : MonoBehaviour
 		}
 
 		if (texture == null)
-			texture = UtilsService.GetDefaultPhoto();
+			texture = UtilsService.GetDefaultProfilePhoto();
 
 		profilePic.texture = texture;
 	}

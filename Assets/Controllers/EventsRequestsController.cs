@@ -30,6 +30,7 @@ public class EventsRequestsController : ScreenController
 
 		if (eventsRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
+			Debug.Log("Received: " + eventsRequest.text);
 			EventsService.UpdateUserEvents(eventsRequest.text);
 			CreateEventRequestsCards();
 		}
@@ -57,7 +58,7 @@ public class EventsRequestsController : ScreenController
         	Event indexEvt = null;
 
         	foreach (Event evt in EventsService.events)
-        		if (evt._id == evtReq._appointment)
+        		if (evt._id == evtReq._appointment._id)
         			indexEvt = evt;
 
         	if (indexEvt == null)

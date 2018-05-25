@@ -89,7 +89,7 @@ public class CameraCaptureService : MonoBehaviour {
 	private void Completetd(string patha)
 	{
 		//pathText.text = pathText.text + "\n" + patha;
-		if (mode == 4 || mode == 3)
+		if (this.mode == 4 || this.mode == 3)
 		{
 			StartCoroutine(LoadImage(patha));
 		}
@@ -125,7 +125,6 @@ public class CameraCaptureService : MonoBehaviour {
 
 		pickPreiveimage.texture = texture;
 		photoBase64 = System.Convert.ToBase64String(texture.EncodeToJPG());
-		texture = null;
 	}
 
 	private IEnumerator LoadVideo(string path)

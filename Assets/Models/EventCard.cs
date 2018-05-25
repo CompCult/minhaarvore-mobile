@@ -36,7 +36,7 @@ public class EventCard : MonoBehaviour
 
 		foreach (EventRequest evtRequest in EventsService.eventsRequests)
 		{
-			if (evtRequest._appointment == evt._id)
+			if (evtRequest._appointment._id == evt._id)
 			{
 				AlertsService.makeAlert("Evento na agenda", "Você já está participando deste evento. Procure outros eventos para ingressar ou consulte sua agenda.", "Entendi");
 				return;
@@ -50,14 +50,18 @@ public class EventCard : MonoBehaviour
 	public void UpdateEventWithStatus (Event evt, EventRequest evtRequest)
 	{
 		this.evtRequest = evtRequest;
-		statusDict["aprovado"] = "Approved";
-		statusDict["pendente"] = "Pending";
-		statusDict["negado"] = "Denied";
+		statusDict["Aprovado"] = "Approved";
+		statusDict["Pendente"] = "Pending";
+		statusDict["Negado"] = "Denied";
 
-		string status = evtRequest.status.ToLower();
+		string status;
+		if (evtRequest.status == null)
+			status = "Pendente";
+		else
+			status = evtRequest.status.ToLower();
 
 		if (!statusDict.ContainsKey(status))
-			status = "negado";
+			status = "Negado";
 
 		foreach (GameObject statusIcon in statusIcons)
 			if (statusDict[status] == statusIcon.name)

@@ -2,13 +2,17 @@
 public class EventRequest
 {
 	public int 
-	_id=-1,
-	_user=-1,
-	_appointment=-1;
+	_id;
 
+	public User 
+	_user;
+
+	public Event 
+	_appointment;
+	
 	public string
-	status="",
-	message="", 
-	updated_at="",
-	created_at="";
+	message,
+	status, 
+	created_at, 
+	updated_at;
 }

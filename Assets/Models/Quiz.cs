@@ -25,6 +25,8 @@ public class Quiz
 	is_public,
 	single_answer;
 
+	public User _user;
+
 	public List<string> answers = new List<string>();
 
 	public void BuildAnswers()

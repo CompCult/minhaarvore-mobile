@@ -13,7 +13,7 @@ public static class EventsService
 	private static EventRequest[] _eventsRequests;
 	public static EventRequest[] eventsRequests { get { return _eventsRequests; } }
 
-	private static string PENDING_STATUS = "pendente",
+	private static string PENDING_STATUS = "Pendente",
 						  PENDING_MESSAGE = "Pedido de participação pendente";
 
 	public static WWW JoinEvent (int userId, Event evt)

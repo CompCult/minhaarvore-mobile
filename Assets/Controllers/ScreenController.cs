@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ScreenController : MonoBehaviour 
 {
+	public static string currentTab;
 	protected static string previousView, nextView;
 
 	public void OnEnable()
@@ -80,9 +81,8 @@ public class ScreenController : MonoBehaviour
 		GameObject footerPrefab = (GameObject) Resources.Load("Prefabs/Footer Menu"),
                    footerInstance = (GameObject) GameObject.Instantiate(footerPrefab, Vector3.zero, Quaternion.identity);
         
+        footerInstance.transform.SetParent (GameObject.FindGameObjectsWithTag("Canvas")[0].transform, false);
         footerInstance.transform.position = new Vector3(Screen.width/2, Screen.height/2, 0);
-	
-        DontDestroyOnLoad(footerInstance);
 	}
 
 	private void DestroyFooterMenu()

@@ -17,7 +17,7 @@ package="com.unity3d.player">
        
         <provider 
 		    android:name="android.support.v4.content.FileProvider" 
-		    android:authorities="net.compcult.inovarg.provider" 
+		    android:authorities="net.compcult.minhaarvore.provider" 
 		    android:exported="false" 
 		    android:grantUriPermissions="true" >
 		   <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
@@ -32,7 +32,6 @@ package="com.unity3d.player">
 
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-feature android:name="android.hardware.camera" />
-	<uses-feature android:name="android.hardware.autofocus"/>
 	
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

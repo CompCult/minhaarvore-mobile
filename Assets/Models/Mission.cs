@@ -23,4 +23,6 @@ public class Mission
 	has_video,
 	has_text,
 	has_geolocation;
+
+	public User _user;
 }

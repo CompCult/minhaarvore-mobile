@@ -10,14 +10,7 @@ public class ModalImage : ModalGeneric
 	public void Start ()
 	{
 		camService.resetFields("pot_seeding");
-	}
-
-	public void Update ()
-	{
-		if (camService.photoBase64 != null)
-			sendButton.interactable = true;
-		else
-			sendButton.interactable = false;
+		StartCoroutine(_CheckCapturedPhoto());
 	}
 
 	public void SavePicture ()
@@ -26,5 +19,16 @@ public class ModalImage : ModalGeneric
 		MissionsService.UpdateMissionAnswer(modalType, photoBase64);
 
 		Destroy();
+	}
+
+	private IEnumerator _CheckCapturedPhoto ()
+	{
+		if (camService.photoBase64 != null)
+			sendButton.interactable = true;
+		else
+			sendButton.interactable = false;
+
+		yield return new WaitForSeconds(2f);
+		yield return StartCoroutine(_CheckCapturedPhoto());
 	}
 }

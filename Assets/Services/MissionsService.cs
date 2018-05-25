@@ -159,8 +159,8 @@ public static class MissionsService
 	private static void ResetContent ()
 	{
 		_missions = null;
-		_mission = null;
-		_missionAnswer = null;
+		_mission = new Mission();
+		_missionAnswer = new MissionAnswer();
 	}
 
 }

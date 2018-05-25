@@ -27,13 +27,17 @@ public class QuizController : ScreenController
 
      	for (int i=0; i < currentQuiz.answers.Count; i++)
      	{
+     		string answer = currentQuiz.answers[i];
+
+     		if (answer.Length < 1)
+     			continue;
+
      		position = new Vector3(position.x, position.y, position.z);
             GameObject card = (GameObject) Instantiate(optionCard, position, Quaternion.identity);
         	card.transform.SetParent(GameObject.Find("List").transform, false);
 
         	QuizOptionCard optionCardScript = card.GetComponent<QuizOptionCard>();
-        	string answer = currentQuiz.answers[i],
-        		   alternative = GetAlternative(i);     
+        	string alternative = GetAlternative(i);     
         	
         	optionCardScript.UpdateOption(answer, alternative);
      	}

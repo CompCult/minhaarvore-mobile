@@ -53,7 +53,7 @@ public class RegisterController : ScreenController
 		if (registerForm.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
 			UserService.UpdateLocalUser(registerForm.text);
-			LoadView("Home");
+			yield return StartCoroutine(_GetUserPhoto());
 		}
 		else
 		{
@@ -64,6 +64,31 @@ public class RegisterController : ScreenController
 		}
 
 		yield return null;
+	}
+
+	private IEnumerator _GetUserPhoto ()
+	{
+		string photoUrl = UserService.user.picture;
+		Texture2D texture;
+
+		if (photoUrl == null || photoUrl.Length < 1)
+		{
+			texture = UtilsService.GetDefaultProfilePhoto();
+		}
+		else
+		{
+			var www = new WWW(photoUrl);
+			yield return www;
+
+			texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+		}
+
+		if (texture != null)
+			UserService.user.profilePicture = texture;
+
+		UserService.user.profilePicture = texture;
+		PlayerPrefs.SetString("MinhaArvore:Email", emailField.text);
+		LoadView("Home");
 	}
 
 	private bool CheckFields()
