@@ -86,6 +86,17 @@ public class CameraCaptureService : MonoBehaviour {
 		videoBase64 = null;
 	}
 
+	public void rotateImage ()
+	{
+		Texture2D texture = pickPreiveimage.texture as Texture2D;
+ 		texture = UtilsService.rotateImage(texture);
+
+		pickPreiveimage.texture = texture;
+ 		photoBase64 = System.Convert.ToBase64String(texture.EncodeToJPG());
+
+ 		Debug.Log("base64: " + photoBase64);
+	}
+
 	private void Completetd(string patha)
 	{
 		//pathText.text = pathText.text + "\n" + patha;
@@ -115,7 +126,7 @@ public class CameraCaptureService : MonoBehaviour {
 		var www = new WWW(url);
 		yield return www;
 
-		var texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+		var texture = UtilsService.ResizeTexture(www.texture, "Average", 0.3f);
 		texture.Apply();
 
 		if (texture == null)

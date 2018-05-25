@@ -116,7 +116,7 @@ public class LoginController : ScreenController
 			var www = new WWW(photoUrl);
 			yield return www;
 
-			texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+			texture = www.texture;
 		}
 
 		if (texture != null)

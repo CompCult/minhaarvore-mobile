@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Text;
 using System.Collections;
@@ -107,11 +107,13 @@ public static class MissionsService
 
 	public static void UpdateMission (string json)
 	{
+		ResetContent();
 		_mission = JsonUtility.FromJson<Mission>(json);
 	}
 
 	public static void UpdateMission (Mission mission)
 	{
+		ResetContent();
 		_mission = mission;
 	}
 

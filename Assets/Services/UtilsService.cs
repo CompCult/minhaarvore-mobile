@@ -78,6 +78,22 @@ public class UtilsService
 
 		return texture;
 	}
+
+	public static Texture2D rotateImage (Texture2D t)
+	{
+	    Texture2D newTexture = new Texture2D(t.height, t.width, t.format, false);
+
+	    for(int i=0; i<t.width; i++)
+	    {
+	        for(int j=0; j<t.height; j++)
+	        {
+	            newTexture.SetPixel(j, i, t.GetPixel(t.width-i, j));
+	        }
+	    }
+	    
+	    newTexture.Apply();
+	    return newTexture;
+	}
 	
 	public static Texture2D ResizeTexture(Texture2D pSource, string pFilterMode, float pScale)
 	{

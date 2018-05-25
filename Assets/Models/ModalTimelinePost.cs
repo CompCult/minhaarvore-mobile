@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ModalTimelinePost : ModalGeneric 
 {
 	public CameraCaptureService camService;
+	public GameObject rotateButton;
 	public InputField newMessageField;
 
 	private string STATUS_OK = "OK";
@@ -13,14 +14,7 @@ public class ModalTimelinePost : ModalGeneric
 	public void Start ()
 	{
 		camService.resetFields("pot_seeding");
-	}
-
-	public void Update ()
-	{
-		if (CheckFields() == STATUS_OK)
-			sendButton.interactable = true;
-		else
-			sendButton.interactable = false;
+		StartCoroutine(_CheckCapturedPhoto());
 	}
 
 	public void SendNewPost()
@@ -51,6 +45,24 @@ public class ModalTimelinePost : ModalGeneric
 			AlertsService.makeAlert("Falha na conexão", "Ocorreu um problema ao enviar sua publicação. Tente novamente.", "Entendi");
 
 		yield return null;
+	}
+
+	private IEnumerator _CheckCapturedPhoto ()
+	{
+		if (camService.photoBase64 != null)
+		{
+			rotateButton.SetActive(true);
+			sendButton.interactable = true;
+		}
+		
+		else
+		{
+			rotateButton.SetActive(false);
+			sendButton.interactable = false;
+		}
+
+		yield return new WaitForSeconds(2f);
+		yield return StartCoroutine(_CheckCapturedPhoto());
 	}
 
 	private string CheckFields()

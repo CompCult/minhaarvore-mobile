@@ -20,6 +20,7 @@ public class RequestController : ScreenController
 	public Toggle termsToggle;
 
 	// Extras
+	public GameObject rotateButton;
 	public CameraCaptureService camService;
 	private string CHECK_OK = "OK",
 				   CURRENT_MENU = "DETAILS",
@@ -36,9 +37,21 @@ public class RequestController : ScreenController
 			termsToggle.gameObject.SetActive(false);
 
 		camService.resetFields("pot_seeding");
+		StartCoroutine(_CheckCapturedPhoto());
 
 		FillPlantTypesDropdown();
 		GPSService.StartGPS();
+	}
+
+	private IEnumerator _CheckCapturedPhoto ()
+	{
+		if (camService.photoBase64 != null)
+			rotateButton.SetActive(true);
+		else
+			rotateButton.SetActive(false);
+
+		yield return new WaitForSeconds(2f);
+		yield return StartCoroutine(_CheckCapturedPhoto());
 	}
 
 	public void ToggleGetLocation()
