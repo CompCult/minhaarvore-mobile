@@ -93,8 +93,6 @@ public class CameraCaptureService : MonoBehaviour {
 
 		pickPreiveimage.texture = texture;
  		photoBase64 = System.Convert.ToBase64String(texture.EncodeToJPG());
-
- 		Debug.Log("base64: " + photoBase64);
 	}
 
 	private void Completetd(string patha)
@@ -135,6 +133,8 @@ public class CameraCaptureService : MonoBehaviour {
 		}
 
 		pickPreiveimage.texture = texture;
+		UtilsService.SizeToParent(pickPreiveimage, 0f);
+
 		photoBase64 = System.Convert.ToBase64String(texture.EncodeToJPG());
 	}
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class QuizController : ScreenController 
 {
 	public GameObject optionCard;
-	public InputField quizTitle, quizDescription;
+	public Text quizTitle, quizDescription;
 
 	public void Start ()
 	{

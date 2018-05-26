@@ -38,6 +38,8 @@ public class SettingsController : ScreenController
 	{
 		camService.resetFields("seeding_icon");
 		camService.pickPreiveimage.texture = originalPhoto;
+
+		UtilsService.SizeToParent(camService.pickPreiveimage, 0f);
 	}
 
 	public void ToggleDataToShow()

@@ -49,11 +49,7 @@ public class PostCard : MonoBehaviour
 		else
 			likeButton.SetActive(true);
 
-		authorName.text = post.author_name;
-		date.text = UtilsService.GetDate(post.created_at);
-		message.text = post.text_msg;
-		likes.text = post.points.ToString();
-
+		UpdateTextFields();
 		StartCoroutine(_GetAuthorPhoto());
 		StartCoroutine(_GetPostImage());
 	}
@@ -73,13 +69,14 @@ public class PostCard : MonoBehaviour
 			var www = new WWW(photoUrl);
 			yield return www;
 
-			texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+			texture = www.texture;
 		}
 
 		if (texture == null)
 			texture = UtilsService.GetDefaultProfilePhoto();
 
 		profilePic.texture = texture;
+		UtilsService.SizeToParent(profilePic, 0f);
 	}
 
 	private IEnumerator _GetPostImage ()
@@ -97,7 +94,7 @@ public class PostCard : MonoBehaviour
 		if (www.responseHeaders["STATUS"] != HTML.HTTP_200)
 			yield break;
 
-		texture = UtilsService.ResizeTexture(www.texture, "Average", 0.25f);
+		texture = www.texture;
 
 		if (texture == null)
 		{
@@ -107,6 +104,7 @@ public class PostCard : MonoBehaviour
 
 		Destroy(loadingHolder);
 		imagePost.texture = texture;
+		UtilsService.SizeToParent(imagePost, 0f);
     }
 
 	private IEnumerator _ChangePostPoints (int newPoints, bool updateUser)
