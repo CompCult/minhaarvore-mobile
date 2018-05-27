@@ -58,7 +58,7 @@ public class EventCard : MonoBehaviour
 		if (evtRequest.status == null)
 			status = "Pendente";
 		else
-			status = evtRequest.status.ToLower();
+			status = evtRequest.status;
 
 		if (!statusDict.ContainsKey(status))
 			status = "Negado";
@@ -124,24 +124,24 @@ public class EventCard : MonoBehaviour
 
     private void FillStatus(EventRequest evtRequest)
     {
-    	string status = evtRequest.status.ToLower();
+    	string status = evtRequest.status;
     	Image background = statusIconBg.GetComponent<Image>();
 
     	switch (status)
       	{
-          case "aprovado":
+          case "Aprovado":
+          	  this.status.text = "Participação aprovada";
               background.color = COLOR_GREEN;
               break;
-          case "negado":
+          case "Negado":
+          	  this.status.text = "Pedido de participação negado";
               background.color = COLOR_RED;
               break;
           default:
+          	  this.status.text = "Pedido de participação pendente";
               background.color = COLOR_YELLOW;
               break;
       	}
-
-      	if (evtRequest.message != null && evtRequest.message.Length > 0)
-      		this.status.text = evtRequest.message;
     }
 
    	private IEnumerator _JoinEvent(int userId)
