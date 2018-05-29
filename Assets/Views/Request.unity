@@ -728,7 +728,18 @@ MonoBehaviour:
     m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 595249306}
+        m_MethodName: UpdatePlaces
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &89648915
@@ -3338,6 +3349,7 @@ GameObject:
   - component: {fileID: 595249303}
   - component: {fileID: 595249302}
   - component: {fileID: 595249301}
+  - component: {fileID: 595249306}
   - component: {fileID: 595249304}
   - component: {fileID: 595249305}
   m_Layer: 0
@@ -3441,6 +3453,19 @@ MonoBehaviour:
   pickPreiveimage: {fileID: 1562025746}
   photoBase64: 
   videoBase64: 
+--- !u!114 &595249306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595249300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4dc2360c49260041869e9a3cf14ea06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeList: {fileID: 89648914}
+  placeList: {fileID: 2077183079}
 --- !u!1 &617724033
 GameObject:
   m_ObjectHideFlags: 0
@@ -8282,7 +8307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jardim
+  m_Text: Local
 --- !u!222 &1657892753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9750,11 +9775,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Jardim
-      m_Image: {fileID: 0}
-    - m_Text: "Cal\xE7ada"
-      m_Image: {fileID: 0}
-    - m_Text: "Canteiro p\xFAblico"
+    - m_Text: Local
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

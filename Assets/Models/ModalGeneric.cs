@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ModalGeneric : MonoBehaviour 
+public class ModalGeneric : ScreenController 
 {
 	public Button sendButton;
 
 	public void Destroy ()
 	{
+		PlaySound("back");
 		Destroy(this.gameObject);
 	}
 

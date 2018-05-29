@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class LoginController : ScreenController 
 {
 	public InputField emailField, passwordField;
-	public Button loginButton, registerButton;
+	public Button loginButton, registerButton, recoverButton;
 	public Text loginText;
 
 	private string IN_MAINTENANCE = "true";
 
 	public void Start ()
 	{
-		loginButton.interactable = false;
 		loginText.text = "Conectando";
+		loginButton.interactable = false;
+		recoverButton.interactable = false;
 		registerButton.interactable = false;
 
 		CheckAuthenticatedUser();
@@ -60,6 +61,7 @@ public class LoginController : ScreenController
 				loginText.text = "Entrar";
 				loginButton.interactable = true;
 				registerButton.interactable = true;
+				recoverButton.interactable = true;
 			}
 		}
 		else 

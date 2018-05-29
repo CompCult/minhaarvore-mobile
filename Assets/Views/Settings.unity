@@ -3286,14 +3286,14 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1112053591}
   m_TextComponent: {fileID: 359686334}
   m_Placeholder: {fileID: 864595265}
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
-  m_CharacterLimit: 0
+  m_CharacterValidation: 5
+  m_CharacterLimit: 128
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -4692,14 +4692,14 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1430153197}
   m_TextComponent: {fileID: 229384857}
   m_Placeholder: {fileID: 2130457647}
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 6
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
-  m_CharacterLimit: 0
+  m_CharacterValidation: 4
+  m_CharacterLimit: 64
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -5283,42 +5283,42 @@ Prefab:
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -447
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 192
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 877
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 224648523410785808, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224860148776565022, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
@@ -5343,7 +5343,7 @@ Prefab:
     - target: {fileID: 224860148776565022, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 192
+      value: 192.5
       objectReference: {fileID: 0}
     - target: {fileID: 224860148776565022, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
@@ -5493,27 +5493,27 @@ Prefab:
     - target: {fileID: 224572277630332420, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224572277630332420, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224572277630332420, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224572277630332420, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224572277630332420, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 384
+      value: 21.18
       objectReference: {fileID: 0}
     - target: {fileID: 224739350017756198, guid: 772f553d322984b4489b7421cac20906,
         type: 2}
@@ -5584,6 +5584,15 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734845644675980, guid: 772f553d322984b4489b7421cac20906, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224572277630332420, guid: 772f553d322984b4489b7421cac20906,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.2100067
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 772f553d322984b4489b7421cac20906, type: 2}
@@ -5901,6 +5910,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 595249304}
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: back
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

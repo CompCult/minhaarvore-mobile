@@ -10,6 +10,8 @@ public class MissionsController : ScreenController
 
 	public void Start ()
 	{
+		TutorialService.CheckTutorial("Missions");
+
 		previousView = "Home";
 		missionCard.SetActive(false);
 		noMissionsCard.SetActive(false);

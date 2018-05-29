@@ -11,6 +11,8 @@ public class GroupsController : ScreenController
 
 	public void Start ()
 	{
+		TutorialService.CheckTutorial("Groups");
+
 		previousView = "Home";
 		groupCard.SetActive(false);
 		noGroupsCard.SetActive(false);

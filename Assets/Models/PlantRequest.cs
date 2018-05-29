@@ -26,4 +26,6 @@ public class PlantRequest
 	zipcode,
 	created_at,
 	updated_at;
+
+	public string[] places;
 }

@@ -38,6 +38,7 @@ UPDATE_ACTION = "update",
 REMOVE_ACTION = "remove",
 SEARCH_PUBLIC = "public?",
 SEARCH_PRIVATE = "private?",
+RECOVERY_ACTION = "recovery",
 QUERY_ACTION = "query/fields?";
 
 }

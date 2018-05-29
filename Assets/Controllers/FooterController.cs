@@ -31,6 +31,7 @@ public class FooterController : ScreenController
 
 	public void LoadViewAndMark(string viewName)
 	{
+		PlaySound("click_1");
 		LoadView(viewName);
 	}
 

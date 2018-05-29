@@ -6,6 +6,7 @@ public class ActivitiesController : ScreenController
 {
 	public void Start ()
 	{
+		TutorialService.CheckTutorial("Activities");
 		previousView = "Home";
 	}
 }

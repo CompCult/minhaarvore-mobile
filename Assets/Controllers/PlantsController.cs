@@ -10,6 +10,8 @@ public class PlantsController : ScreenController
 
 	public void Start ()
 	{
+		TutorialService.CheckTutorial("Plants");
+
 		previousView = "Login";
 		plantCard.SetActive(false);
 		

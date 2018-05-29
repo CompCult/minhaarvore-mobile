@@ -10,6 +10,8 @@ public class TimelineController : ScreenController
 
 	public void Start ()
 	{
+		TutorialService.CheckTutorial("Timeline");
+
 		previousView = "Home";
 
 		postCard.SetActive(false);

@@ -34,6 +34,7 @@ public static class UserService
 		WWWForm registerForm = new WWWForm();
 		registerForm.AddField ("name", user.name);
 		registerForm.AddField ("email", user.email);
+		Debug.Log("Registrando como " + user.type);
 		registerForm.AddField ("type", user.type);
 		registerForm.AddField ("password", user.password);
 		if (user.institution.Length > 1)
@@ -43,6 +44,18 @@ public static class UserService
 		WebService.action = ENV.REGISTER_ACTION;
 
 		return WebService.Post(registerForm);
+	}
+
+	public static WWW Recover (string email, string newPassword)
+	{
+		WWWForm recoverForm = new WWWForm();
+		recoverForm.AddField ("email", email);
+		recoverForm.AddField ("new_password", newPassword);
+		
+		WebService.route = ENV.USERS_ROUTE;
+		WebService.action = ENV.RECOVERY_ACTION;
+
+		return WebService.Post(recoverForm);
 	}
 
 	public static WWW Update (User user, string photoBase64)

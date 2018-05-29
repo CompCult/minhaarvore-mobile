@@ -10,6 +10,8 @@ public class QuizzesController : ScreenController
 
 	public void Start ()
 	{
+		TutorialService.CheckTutorial("Quizzes");
+
 		previousView = "Home";
 		quizCard.SetActive(false);
 		noQuizzesCard.SetActive(false);

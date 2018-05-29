@@ -9,6 +9,8 @@ public class EventsController : ScreenController
 
 	public void Start ()
 	{
+		TutorialService.CheckTutorial("Events");
+
 		previousView = "Login";
 		eventCard.SetActive(false);
 

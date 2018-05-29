@@ -16,6 +16,8 @@ public class HomeController : ScreenController
 		currentTab = "Home";
 		photoTexture = UserService.user.profilePicture;
 
+		TutorialService.CheckTutorial("Welcome");
+
 		UpdateAndShowUser ();
 	}
 

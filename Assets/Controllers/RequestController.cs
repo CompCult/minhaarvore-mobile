@@ -39,7 +39,6 @@ public class RequestController : ScreenController
 		camService.resetFields("pot_seeding");
 		StartCoroutine(_CheckCapturedPhoto());
 
-		FillPlantTypesDropdown();
 		GPSService.StartGPS();
 	}
 
@@ -187,16 +186,6 @@ public class RequestController : ScreenController
 			sideWalkSizeObj.SetActive(true);
 		else
 			sideWalkSizeObj.SetActive(false);
-	}
-
-	private void FillPlantTypesDropdown ()
-	{
-		if (plantTypesDropdown != null)
-		{
-			plantTypesDropdown.ClearOptions();
-	        plantTypesDropdown.AddOptions(PlantsService.GetTypeNames());
-	        plantTypesDropdown.RefreshShownValue();
-    	}
 	}
 
 	private string CheckFields ()
