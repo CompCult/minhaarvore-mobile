@@ -47,10 +47,11 @@ public class RequestController : ScreenController
 		if (camService.photoBase64 != null)
 			rotateButton.SetActive(true);
 		else
+		{
 			rotateButton.SetActive(false);
-
-		yield return new WaitForSeconds(2f);
-		yield return StartCoroutine(_CheckCapturedPhoto());
+			yield return new WaitForSeconds(2f);
+			yield return StartCoroutine(_CheckCapturedPhoto());
+		}
 	}
 
 	public void ToggleGetLocation()
@@ -170,7 +171,9 @@ public class RequestController : ScreenController
 
 		if (requestForm.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			yield return StartCoroutine(_Return());
+			AlertsService.makeAlert("Solicitação realizada", "Em breve entraremos em contato caso seu pedido seja aprovado.", "");
+			yield return new WaitForSeconds(5f);
+			LoadView("Plants");
 		}
 		else
 		{
@@ -178,14 +181,6 @@ public class RequestController : ScreenController
 		}
 
 		yield return null;
-	}
-
-	public void UpdatePlace ()
-	{
-		if (placeDropdown.captionText.text == "Calçada")
-			sideWalkSizeObj.SetActive(true);
-		else
-			sideWalkSizeObj.SetActive(false);
 	}
 
 	private string CheckFields ()
@@ -233,13 +228,4 @@ public class RequestController : ScreenController
 
 		return message;
 	}
-
-	private IEnumerator _Return ()
-	{
-		AlertsService.makeAlert("Solicitação realizada", "Em breve entraremos em contato caso seu pedido seja aprovado.", "");
-		yield return new WaitForSeconds(5f);
-		LoadView("Plants");
-		yield return null;
-	}
-
 }

@@ -13,11 +13,14 @@ public class PlantType
 	description,
 	photo;
 
-	public string[] places;
+	public Place[] _places;
 
-	public List<string> GetPlaceList()
+	public List<string> GetPlaceList ()
 	{
-		var list = new List<string>(places);
-		return list;
+		List<string> placeNames = new List<string>();
+		foreach (Place place in _places)
+			placeNames.Add(place.name);
+
+		return placeNames;
 	}
 }

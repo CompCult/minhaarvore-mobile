@@ -32,6 +32,10 @@ public class PlantsController : ScreenController
 		if (typesRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
 			PlantsService.UpdateLocalPlantTypes(typesRequest.text);
+
+			foreach (PlantType plant in PlantsService.types)
+				Debug.Log("Locais: " + plant._places[0].name);
+
 			yield return StartCoroutine(_GetPlants());
 		}
 		else 

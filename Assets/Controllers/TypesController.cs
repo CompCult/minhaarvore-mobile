@@ -6,28 +6,50 @@ using UnityEngine.UI;
 public class TypesController : MonoBehaviour 
 {
 	public Dropdown typeList, placeList;
+	public GameObject sideWalkSizeObj;
 
 	public void Start () 
 	{
-		UpdatePlaces();
+		FillPlantTypes();
 	}
 	
 	public void UpdatePlaces () 
 	{
-		string newType = placeList.captionText.text;
+		string newType = typeList.captionText.text;
 		PlantType[] types = PlantsService.types;
 
 		foreach (PlantType type in types)
 			if (type.name == newType)
 			{
-				UpdatePlaceList(type.GetPlaceList());
+				UpdateList(placeList, type.GetPlaceList());
 				break;
 			}
-
 	}
 
-	private void UpdatePlaceList(List<string> places)
+	public void CheckSidewalk ()
 	{
-		placeList.AddOptions(places);
+		if (placeList.captionText.text == "Calçada")
+			sideWalkSizeObj.SetActive(true);
+		else
+			sideWalkSizeObj.SetActive(false);
+	}
+
+	private void FillPlantTypes ()
+	{
+		List<string> plantTypes = PlantsService.GetTypeNames(),
+					 initialPlaces = PlantsService.types[0].GetPlaceList();
+		
+		UpdateList(typeList, plantTypes);
+		UpdateList(placeList, initialPlaces);
+		CheckSidewalk();
+	}
+
+	private void UpdateList (Dropdown list, List<string> options)
+	{
+		list.ClearOptions();
+		list.AddOptions(options);
+		list.RefreshShownValue();
+
+		CheckSidewalk();
 	}
 }

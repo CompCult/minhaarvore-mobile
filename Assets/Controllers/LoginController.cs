@@ -13,6 +13,8 @@ public class LoginController : ScreenController
 
 	public void Start ()
 	{
+		PlaySound("click_1");
+
 		loginText.text = "Conectando";
 		loginButton.interactable = false;
 		recoverButton.interactable = false;
