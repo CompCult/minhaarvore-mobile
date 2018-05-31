@@ -158,8 +158,6 @@ public class GroupController : ScreenController
 
 	private IEnumerator _UpdateGroupInfo ()
 	{
-		AlertsService.makeLoadingAlert("Atualizando");
-
 		Group currentGroup = GroupsService.group;
 		WWW updateRequest = GroupsService.UpdateGroup(currentGroup);
 

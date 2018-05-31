@@ -7,38 +7,46 @@ using UnityEngine.Networking;
 public class ModalShowImage : ModalGeneric 
 {
 	public GameObject loadingHolder;
-	public Image mapImage;
+	public Image image;
 
-	private string location, location_lat, location_lng,
-				   PLANTS_VIEW = "Plants";
+	private string location_lat, location_lng,
+				   PLANTS_VIEW = "Plants",
+				   SUBMISSIONS_VIEW = "Submissions";
 
 	public void Start ()
 	{
+		string url, location;
+
 		if (GetViewName() == PLANTS_VIEW)
 		{
 			Plant currentPlant = PlantsService.plant;
 			location_lat = (currentPlant.location_lat != null ? currentPlant.location_lat : "0");
 			location_lng = (currentPlant.location_lng != null ? currentPlant.location_lng : "0");
+			location = location_lat + "," + location_lng;
+
+			url = ENV.GOOGLE_MAPS_COORD_URL.Replace("PLACE", location);
 		}
-		else
+		else if (GetViewName() == SUBMISSIONS_VIEW)
 		{
 			MissionAnswer currentAnswer = MissionsService.missionAnswer;
 			location_lat = (currentAnswer.location_lat != null ? currentAnswer.location_lat : "0");
 			location_lng = (currentAnswer.location_lng != null ? currentAnswer.location_lng : "0");
+			location = location_lat + "," + location_lng;
+
+			url = ENV.GOOGLE_MAPS_COORD_URL.Replace("PLACE", location);
+		}
+		else
+		{
+			PlantType plantType = PlantsService.type;
+			url = plantType.photo;
 		}
 
-		location = location_lat + "," + location_lng;
-
-		StartCoroutine(_UpdateImage());
+		if (url != null)
+			StartCoroutine(_ShowImage(url));
 	}
 
-	private IEnumerator _UpdateImage ()
+	private IEnumerator _ShowImage (string url)
     {
-    	if (location == null)
-    		yield break;
-
-    	string url = ENV.GOOGLE_MAPS_COORD_URL.Replace("PLACE", location);
-    	
     	UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
 		www.SetRequestHeader("Accept", "image/*");
 		
@@ -56,9 +64,8 @@ public class ModalShowImage : ModalGeneric
 		    texture.LoadImage(results);
 		    Sprite sprite = Sprite.Create(texture, new Rect(0,0, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
 
-		    mapImage.sprite = sprite;
+		    image.sprite = sprite;
 		    Destroy(loadingHolder);
 		}
     }
-
 }

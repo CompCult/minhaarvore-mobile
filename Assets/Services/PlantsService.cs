@@ -7,6 +7,9 @@ using System.Security.Cryptography;
 
 public static class PlantsService
 {
+	private static PlantType _type;
+	public static PlantType type { get { return _type; } }
+
 	private static PlantType[] _types;
 	public static PlantType[] types { get { return _types; } }
 
@@ -105,6 +108,11 @@ public static class PlantsService
 	public static void UpdateLocalPlantTypes (string json)
 	{
 		_types = UtilsService.GetJsonArray<PlantType>(json);
+	}
+
+	public static void UpdateLocalPlantType (PlantType type)
+	{
+		_type = type;
 	}
 
 	public static List<string> GetTypeNames ()

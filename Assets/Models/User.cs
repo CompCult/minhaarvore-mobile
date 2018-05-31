@@ -7,7 +7,8 @@ public class User
 	public int 
 	_id=0,
 	points=0,
-	sec_points=0;
+	sec_points=0,
+	request_limit=5;
 
 	public string 
 	name="",

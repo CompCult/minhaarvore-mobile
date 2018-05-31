@@ -72,6 +72,23 @@ public class RequestController : ScreenController
 		}
 	}
 
+	public void CheckQuantity ()
+	{
+		if (quantityField.text.Length >= 1)
+		{
+			int quantity = int.Parse(quantityField.text),
+				requestLimit = UserService.user.request_limit;
+
+			if (quantity > requestLimit)
+			{
+				string message = "Seu limite de mudas por pedido é de " + requestLimit + " mudas. Realize ações no aplicativo ou entre em contato com a SESUMA para aumentar seu limite.";
+
+				AlertsService.makeAlert("Pedido grande", message, "Entendi");
+				quantityField.text = requestLimit.ToString();
+			}
+		}
+	}
+
 	private IEnumerator _CheckGPS()
 	{
 		bool mustCheckGPS = false;
@@ -171,8 +188,8 @@ public class RequestController : ScreenController
 
 		if (requestForm.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			AlertsService.makeAlert("Solicitação realizada", "Em breve entraremos em contato caso seu pedido seja aprovado.", "");
-			yield return new WaitForSeconds(5f);
+			AlertsService.makeAlert("Solicitação realizada", "Seu pedido será avaliado em 5 dias úteis. Se aprovado, sua árvore será entregue entre 30 a 40 dias.", "");
+			yield return new WaitForSeconds(6f);
 			LoadView("Plants");
 		}
 		else

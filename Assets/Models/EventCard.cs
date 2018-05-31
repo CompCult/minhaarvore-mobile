@@ -146,7 +146,6 @@ public class EventCard : MonoBehaviour
 
    	private IEnumerator _JoinEvent(int userId)
 	{
-		AlertsService.makeLoadingAlert("Enviando");
 		WWW joinRequest = EventsService.JoinEvent(userId, evt);
 
 		while (!joinRequest.isDone)
@@ -154,7 +153,6 @@ public class EventCard : MonoBehaviour
 
 		Debug.Log("Header: " + joinRequest.responseHeaders["STATUS"]);
 		Debug.Log("Text: " + joinRequest.text);
-		AlertsService.removeLoadingAlert();
 
 		if (joinRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 			AlertsService.makeAlert("SUCESSO", "Seu pedido de participação no evento foi enviado. Acompanhe o status do pedido em sua agenda.", "OK");

@@ -106,13 +106,10 @@ public class GroupMemberCard : MonoBehaviour
 
 		if (removeRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			AlertsService.makeAlert("Sucesso", "Este usuário não faz mais parte do grupo.", "");
-			yield return new WaitForSeconds(2f);
-
 			if (isCurrentUser)
 				SceneManager.LoadScene("Groups");
 			else
-				SceneManager.LoadScene("Group");
+				Destroy(this.gameObject);
 
 			yield return null;
 		}
@@ -127,14 +124,6 @@ public class GroupMemberCard : MonoBehaviour
 	private IEnumerator _ToggleAdmin ()
 	{
 		member.is_admin = !member.is_admin;
-
-		string message;
-		if (member.is_admin)
-			message = "Promovendo";
-		else
-			message = "Despromovendo";
-
-		AlertsService.makeLoadingAlert(message);
 		WWW updateRequest = GroupsService.UpdateMember(member);
 
 		while (!updateRequest.isDone)
@@ -142,17 +131,10 @@ public class GroupMemberCard : MonoBehaviour
 
 		Debug.Log("Header: " + updateRequest.responseHeaders["STATUS"]);
 		Debug.Log("Text: " + updateRequest.text);
-		AlertsService.removeLoadingAlert();
 
 		if (updateRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			if (member.is_admin)
-				AlertsService.makeAlert("Sucesso", "O usuário agora é um administrador do grupo.", "");
-			else
-				AlertsService.makeAlert("Sucesso", "O usuário deixou de ser um administrador do grupo.", "");
-			yield return new WaitForSeconds(2f);
-			SceneManager.LoadScene("Group");
-			yield return null;
+			UpdateMember(member);
 		}
 		else 
 		{

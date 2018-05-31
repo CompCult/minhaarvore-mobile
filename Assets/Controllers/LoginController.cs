@@ -6,22 +6,10 @@ using UnityEngine.UI;
 public class LoginController : ScreenController 
 {
 	public InputField emailField, passwordField;
-	public Button loginButton, registerButton, recoverButton;
-	public Text loginText;
-
-	private string IN_MAINTENANCE = "true";
 
 	public void Start ()
 	{
-		PlaySound("click_1");
-
-		loginText.text = "Conectando";
-		loginButton.interactable = false;
-		recoverButton.interactable = false;
-		registerButton.interactable = false;
-
 		CheckAuthenticatedUser();
-		StartCoroutine(_CheckMaintenance());
 	}
 
 	private void CheckAuthenticatedUser ()
@@ -39,40 +27,6 @@ public class LoginController : ScreenController
 	{
 		AlertsService.makeLoadingAlert("Autenticando");
 		StartCoroutine(_Authenticate());
-	}
-
-	private IEnumerator _CheckMaintenance ()
-	{
-		WWW checkRequest = SystemService.CheckMaintenance();
-
-		while (!checkRequest.isDone)
-			yield return new WaitForSeconds(0.1f);
-
-		Debug.Log("Header: " + checkRequest.responseHeaders["STATUS"]);
-		Debug.Log("Text: " + checkRequest.text);
-
-		if (checkRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
-		{
-			if (checkRequest.text == IN_MAINTENANCE)
-			{
-				AlertsService.makeAlert("EM MANUTENÇÃO", "O Minha Árvore está em manutenção no momento. Por favor, tente novamente mais tarde.", "Entendi");
-				loginText.text = "Em manutenção";
-			}
-			else
-			{
-				loginText.text = "Entrar";
-				loginButton.interactable = true;
-				registerButton.interactable = true;
-				recoverButton.interactable = true;
-			}
-		}
-		else 
-		{
-			AlertsService.makeAlert("FALHA NA CONEXÃO", "Houve uma falha na conexão com o Minha Árvore. Por favor, tente novamente mais tarde.", "OK");
-			loginText.text = "Falha na conexão";
-		}
-
-		yield return null;
 	}
 
 	private IEnumerator _Authenticate ()

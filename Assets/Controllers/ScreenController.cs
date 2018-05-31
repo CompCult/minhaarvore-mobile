@@ -22,7 +22,8 @@ public class ScreenController : MonoBehaviour
 	{
 	    if (GetViewName() != "Login" && 
 	    	GetViewName() != "Register" &&
-	    	GetViewName() != "Recover")
+	    	GetViewName() != "Recover" &&
+	    	GetViewName() != "Splash")
 			ShowFooterMenu();
 		else
 			DestroyFooterMenu();

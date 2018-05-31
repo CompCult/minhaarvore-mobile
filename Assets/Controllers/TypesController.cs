@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TypesController : MonoBehaviour 
 {
+	public Button showTypePhoto;
 	public Dropdown typeList, placeList;
 	public GameObject sideWalkSizeObj;
 
@@ -21,6 +22,9 @@ public class TypesController : MonoBehaviour
 		foreach (PlantType type in types)
 			if (type.name == newType)
 			{
+				PlantsService.UpdateLocalPlantType(type);
+				showTypePhoto.interactable = true;
+
 				UpdateList(placeList, type.GetPlaceList());
 				break;
 			}
@@ -38,9 +42,13 @@ public class TypesController : MonoBehaviour
 	{
 		List<string> plantTypes = PlantsService.GetTypeNames(),
 					 initialPlaces = PlantsService.types[0].GetPlaceList();
+
+		Debug.Log("initialPlaces: " + initialPlaces[0]);
 		
 		UpdateList(typeList, plantTypes);
 		UpdateList(placeList, initialPlaces);
+
+		UpdatePlaces();
 		CheckSidewalk();
 	}
 
