@@ -2179,8 +2179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -335.445, y: -638.681}
-  m_SizeDelta: {x: 353.11, y: 154.638}
+  m_AnchoredPosition: {x: -335.445, y: -638.18}
+  m_SizeDelta: {x: 353.11, y: 153.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &351644440
 MonoBehaviour:
@@ -3731,14 +3731,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1222557065}
   - {fileID: 772396189}
+  - {fileID: 1222557065}
   m_Father: {fileID: 1823759331}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.532501, y: -514.18335}
+  m_AnchoredPosition: {x: -0.58301, y: -426.75}
   m_SizeDelta: {x: 849.30865, y: 152.9519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692670441
@@ -4336,12 +4336,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 692670440}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55.99997, y: 54.9552}
-  m_SizeDelta: {x: 802.9, y: 88.1}
+  m_AnchoredPosition: {x: 68.18353, y: 23.149963}
+  m_SizeDelta: {x: 814, y: 162.9}
   m_Pivot: {x: 0.5, y: 0.61154735}
 --- !u!114 &772396190
 MonoBehaviour:
@@ -4375,8 +4375,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Confirmo que meus pais ou respons\xE1veis est\xE3o cientes de meu pedido
-    pelo aplicativo Minha \xC1rvore."
+  m_Text: "Estou ciente de minha responsabilidade socioambiental em cuidar do crescimento
+    da(s) muda(s) aqui solicitada(s) conforme crit\xE9rios do programa Minha \xC1rvore
+    e prefeitura municipal."
 --- !u!222 &772396191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5584,7 +5585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &857592080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7120,7 +7121,7 @@ RectTransform:
   m_Children:
   - {fileID: 517698874}
   m_Father: {fileID: 692670440}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8477,8 +8478,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.9, y: -0.5}
-  m_SizeDelta: {x: 487.1, y: 71}
+  m_AnchoredPosition: {x: -30.89, y: -0.5}
+  m_SizeDelta: {x: 493.07, y: 71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657892752
 MonoBehaviour:
@@ -8809,7 +8810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1823759331
 RectTransform:
   m_ObjectHideFlags: 0

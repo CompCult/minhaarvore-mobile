@@ -25,6 +25,8 @@ public class TypesController : MonoBehaviour
 				PlantsService.UpdateLocalPlantType(type);
 				showTypePhoto.interactable = true;
 
+				Debug.Log("type.GetPlaceList():" + type.GetPlaceList()[0]);
+
 				UpdateList(placeList, type.GetPlaceList());
 				break;
 			}
@@ -32,7 +34,9 @@ public class TypesController : MonoBehaviour
 
 	public void CheckSidewalk ()
 	{
-		if (placeList.captionText.text == "Calçada")
+		string currentPlace = placeList.captionText.text.ToLower();
+
+		if (currentPlace.Contains("calçada"))
 			sideWalkSizeObj.SetActive(true);
 		else
 			sideWalkSizeObj.SetActive(false);
