@@ -28,4 +28,16 @@ public class PlantRequest
 	updated_at;
 
 	public string[] places;
+
+	public string GetAddress()
+	{
+		string address;
+
+		if (location_lat != null && location_lng != null)
+			address = location_lat + "," + location_lng;
+		else
+		 	address = street + " " + number + " " + city + " " + state;
+		
+		return address;
+	}
 }

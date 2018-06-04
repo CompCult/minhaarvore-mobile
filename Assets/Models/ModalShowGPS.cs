@@ -37,7 +37,7 @@ public class ModalShowGPS : ModalGeneric
     	if (location == null)
     		yield break;
 
-    	string url = ENV.GOOGLE_MAPS_COORD_URL.Replace("PLACE", location);
+    	string url = ENV.GOOGLE_MAPS_COORD_URL.Replace("PLACE", location).Replace(" ", "%20");
     	
     	UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
 		www.SetRequestHeader("Accept", "image/*");

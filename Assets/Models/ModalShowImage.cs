@@ -20,9 +20,7 @@ public class ModalShowImage : ModalGeneric
 		if (GetViewName() == PLANTS_VIEW)
 		{
 			Plant currentPlant = PlantsService.plant;
-			location_lat = (currentPlant.location_lat != null ? currentPlant.location_lat : "0");
-			location_lng = (currentPlant.location_lng != null ? currentPlant.location_lng : "0");
-			location = location_lat + "," + location_lng;
+			location = currentPlant._request.GetAddress();
 
 			url = ENV.GOOGLE_MAPS_COORD_URL.Replace("PLACE", location);
 		}

@@ -10,7 +10,7 @@ public static class TutorialService
 	{
 		Debug.Log("UserService.user.type: " + UserService.user.type);
 
-		if (UserService.user.type != "Estudante")
+		if (!UserService.user.type.ToLower().Contains("estudante"))
 			return;
 
 		string hash = GetHash(stepName);

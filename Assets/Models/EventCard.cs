@@ -99,7 +99,10 @@ public class EventCard : MonoBehaviour
 
 	private IEnumerator UpdateImage ()
     {
-    	string url = ENV.GOOGLE_MAPS_URL.Replace("PLACE", evt.place);
+    	string url = ENV.GOOGLE_MAPS_URL.Replace("PLACE", evt.place).Replace(" ", "%20");
+
+    	Debug.Log("url: " + url);
+
     	UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
 		www.SetRequestHeader("Accept", "image/*");
 		
