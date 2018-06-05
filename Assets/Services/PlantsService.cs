@@ -19,7 +19,7 @@ public static class PlantsService
 	private static Plant _plant;
 	public static Plant plant { get { return _plant; } }
 
-	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string placeName, string sidewalkSize, int quantity, 
+	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string requesterPhone, string placeName, string sidewalkSize, int quantity, 
 								   string street, string number, string neighborhood, string city, string state, string complement, string zipcode, string locationType)
 	{
 		Debug.Log("photo: " + photoBase64.Substring(0, 32));
@@ -27,6 +27,7 @@ public static class PlantsService
 		Debug.Log("_type: " + typeID);
 		Debug.Log("tree_name: " + plantName);
 		Debug.Log("requester_name: " + requesterName);
+		Debug.Log("requester_phone: " + requesterName);
 		Debug.Log("place: " + placeName);
 		Debug.Log("quantity: " + quantity);
 
@@ -36,6 +37,7 @@ public static class PlantsService
 		requestForm.AddField ("photo", photoBase64);
 		requestForm.AddField ("tree_name", plantName);
 		requestForm.AddField ("requester_name", requesterName);
+		requestForm.AddField ("requester_phone", requesterPhone);
 		requestForm.AddField ("quantity", quantity);
 		requestForm.AddField ("place", placeName);
 

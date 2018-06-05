@@ -10,7 +10,7 @@ public class RequestController : ScreenController
 	// Details
 	public GameObject sideWalkSizeObj;
 	public Dropdown plantTypesDropdown, placeDropdown;
-	public InputField plantName, requesterName, quantityField, sideWalkSize;
+	public InputField plantName, requesterName, requesterPhone, quantityField, sideWalkSize;
 
 	// Address
 	public GameObject manualAddressObj, gpsImageObj;
@@ -162,6 +162,7 @@ public class RequestController : ScreenController
 
 		string plant = plantName.text,
 			   requester = requesterName.text,
+			   phone = requesterPhone.text,
 			   place = placeDropdown.captionText.text,
 			   sidewalkSize = sideWalkSize.text,
 			   street = streetField.text,
@@ -176,7 +177,7 @@ public class RequestController : ScreenController
 			if (type.name.Equals(plantTypesDropdown.captionText.text))
 				typeID = type._id;
 
-		WWW requestForm = PlantsService.RequestTree(typeID, photoBase64, plant, requester, place, sidewalkSize, quantity,
+		WWW requestForm = PlantsService.RequestTree(typeID, photoBase64, plant, requester, phone, place, sidewalkSize, quantity,
 													street, number, neighborhood, city, state, complement, zipcode, CURRENT_GET_LOCATION);
 
 		while (!requestForm.isDone)
@@ -225,6 +226,9 @@ public class RequestController : ScreenController
 		
 		if (requesterName.text.Length < 3)
 			message = "O nome do solicitante deve possuir, pelo menos, três caracteres.";
+
+		if (requesterPhone.text.Length < 8)
+			message = "O telefone do solicitante deve conter, pelo menos, oito dígitos.";
 		
 		if (UserService.user.IsMinor() && !termsToggle.isOn)
 			message = "Você deve concordar com o termo de ciência de pedidos no Minha Árvore.";
