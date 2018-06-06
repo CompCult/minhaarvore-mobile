@@ -14,7 +14,8 @@ public class PlantCard : MonoBehaviour
 	public Plant plant;
 
 	private string photoUrl;
-	private string STATUS_APPROVED = "Aprovado",
+	private string STATUS_PLANTED = "Plantada",
+				   STATUS_APPROVED = "Aprovado",
 				   STATUS_REJECTED = "Rejeitado",
 				   STATUS_PENDING = "Pendente",
 				   UNKNOWN_TYPE = "Tipo desconhecido";
@@ -41,6 +42,15 @@ public class PlantCard : MonoBehaviour
 				statusRejected.SetActive(true);
 				date.text = STATUS_REJECTED;
 			}
+			else if (plant._request.status == STATUS_PLANTED)
+			{
+				statusApproved.SetActive(true);
+
+				if (plant.planting_date != null)
+    				date.text = STATUS_PLANTED + " em " + UtilsService.GetDate(plant.planting_date);
+				else
+					date.text = STATUS_PLANTED;
+			}
 			else
 			{
 				statusPending.SetActive(true);
@@ -49,12 +59,9 @@ public class PlantCard : MonoBehaviour
 		}
 		else
 		{
-			statusPending.SetActive(true);
-			date.text = STATUS_PENDING;
+			statusRejected.SetActive(true);
+			date.text = "Falha no pedido";
 		}
-
-		if (plant.planting_date != null)
-    		date.text = "Plantada em " + plant.planting_date;
 
     	type.text = UNKNOWN_TYPE;
     	foreach (PlantType type in PlantsService.types)
