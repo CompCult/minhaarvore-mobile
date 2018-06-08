@@ -41,4 +41,9 @@ SEARCH_PRIVATE = "private?",
 RECOVERY_ACTION = "recovery",
 QUERY_ACTION = "query/fields?";
 
+// MISC
+public static string
+FACEBOOK_PAGE = "https://www.facebook.com/Programa-Minha-%C3%81rvore-1774003749541481/",
+INSTAGRAM_PAGE = "https://www.instagram.com/programminhaarvore/";
+
 }

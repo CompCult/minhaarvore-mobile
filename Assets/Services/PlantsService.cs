@@ -27,7 +27,7 @@ public static class PlantsService
 		Debug.Log("_type: " + typeID);
 		Debug.Log("tree_name: " + plantName);
 		Debug.Log("requester_name: " + requesterName);
-		Debug.Log("requester_phone: " + requesterName);
+		Debug.Log("requester_phone: " + requesterPhone);
 		Debug.Log("place: " + placeName);
 		Debug.Log("quantity: " + quantity);
 
