@@ -12,7 +12,7 @@ public class PostCard : MonoBehaviour
 	public Text authorName, date, message, likes;
 
 	public Post post;
-	public GameObject loadingHolder, likeButton;
+	public GameObject loadingHolder, likeButton, removeButton;
 
 	public void LikePost ()
 	{
@@ -32,6 +32,40 @@ public class PostCard : MonoBehaviour
 		UpdateFields();
 	}
 
+	public void RemovePost ()
+	{
+		AlertsService.makeLoadingAlert("Removendo");
+		StartCoroutine(_RemovePost());
+	}
+
+	public void UpdateFields()
+	{
+		User currentUser = UserService.user;
+
+		if (currentUser._id == post._user)
+		{
+			likeButton.SetActive(false);
+			removeButton.SetActive(true);
+		}
+		else
+		{
+			likeButton.SetActive(true);
+
+
+			Debug.Log("currentUser.type: " + currentUser.type);
+
+
+			if (currentUser.type.ToLower().Contains("gestor"))
+				removeButton.SetActive(true);
+			else
+				removeButton.SetActive(false);
+		}
+
+		UpdateTextFields();
+		StartCoroutine(_GetAuthorPhoto());
+		StartCoroutine(_GetPostImage());
+	}
+
 	public void UpdateTextFields()
 	{
 		authorName.text = post.author_name;
@@ -40,18 +74,21 @@ public class PostCard : MonoBehaviour
 		likes.text = post.points.ToString();
 	}
 
-	public void UpdateFields()
+	private IEnumerator _RemovePost ()
 	{
-		User currentUser = UserService.user;
+		WWW removeRequest = TimelineService.RemovePost(post);
 
-		if (currentUser._id == post._user)
-			likeButton.SetActive(false);
-		else
-			likeButton.SetActive(true);
+		while (!removeRequest.isDone)
+			yield return new WaitForSeconds(0.1f);
 
-		UpdateTextFields();
-		StartCoroutine(_GetAuthorPhoto());
-		StartCoroutine(_GetPostImage());
+		Debug.Log("Header: " + removeRequest.responseHeaders["STATUS"]);
+		Debug.Log("Text: " + removeRequest.text);
+		AlertsService.removeLoadingAlert();
+
+		if (removeRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
+		{
+			Destroy(this.gameObject);
+		}
 	}
 
 	private IEnumerator _GetAuthorPhoto ()

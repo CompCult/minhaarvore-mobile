@@ -471,8 +471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emailField: {fileID: 2024087253}
   passwordField: {fileID: 1835178002}
-  registerButton: {fileID: 661428033}
-  recoverButton: {fileID: 1315788832}
 --- !u!114 &595249305
 MonoBehaviour:
   m_ObjectHideFlags: 0

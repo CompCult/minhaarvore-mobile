@@ -9,6 +9,8 @@ public class RegisterController : ScreenController
 	public InputField nameField, emailField, passwordField, institutionField;
 	public Dropdown userTypeDropdown;
 
+	private string TYPE_PLACEHOLDER = "Você é...";
+
 	public void Start()
 	{
 		previousView = "Login";
@@ -16,22 +18,28 @@ public class RegisterController : ScreenController
 
 	public void Register()
 	{
-		AlertsService.makeLoadingAlert("Registrando");
-
 		StartCoroutine(_Register());
 	}
 
 	public void CheckUserType ()
 	{
-		if (userTypeDropdown.captionText.text == "Estudante" ||
-			userTypeDropdown.captionText.text == "Professor")
+		if (userTypeDropdown.captionText.text == "Estudante")
 			institutionFieldObj.SetActive(true);
+		else if (userTypeDropdown.captionText.text == TYPE_PLACEHOLDER)
+			userTypeDropdown.value = 1;
 		else
 			institutionFieldObj.SetActive(false);
 	}
 
 	private IEnumerator _Register()
 	{
+		if (!CheckFields())
+		{
+			AlertsService.makeAlert("Campos inválidos", "Preencha todos os campos corretamente antes de registrar-se.", "Entendi");
+			yield break;
+		}
+
+		AlertsService.makeLoadingAlert("Registrando");
 		User newUser = new User();
 
 		newUser.name = nameField.text;
@@ -93,8 +101,19 @@ public class RegisterController : ScreenController
 
 	private bool CheckFields()
 	{
+		bool validInstitution;
+		if (institutionFieldObj.activeSelf)
+			if (institutionField.text.Length > 3)
+				validInstitution = true;
+			else
+				validInstitution = false;
+		else
+			validInstitution = true;
+
 		return UtilsService.CheckName(nameField.text) &&
 			   UtilsService.CheckEmail(emailField.text) && 
-			   UtilsService.CheckPassword(passwordField.text);
+			   UtilsService.CheckPassword(passwordField.text) &&
+			   userTypeDropdown.captionText.text != "Você é..." &&
+			   validInstitution;
 	}
 }

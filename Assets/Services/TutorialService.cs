@@ -8,8 +8,6 @@ public static class TutorialService
 
 	public static void CheckTutorial (string stepName)
 	{
-		Debug.Log("UserService.user.type: " + UserService.user.type);
-
 		if (!UserService.user.type.ToLower().Contains("estudante"))
 			return;
 
@@ -18,6 +16,23 @@ public static class TutorialService
 		if (!PlayerPrefs.HasKey(hash))
 		{
 			OpenModal(stepName);
+			PlayerPrefs.SetString(hash, STATUS_DONE);
+		}
+	}
+
+	public static void CheckParentalAlert ()
+	{
+		if (UserService.user.type.ToLower().Contains("estudante"))
+			return;
+
+		int userId = UserService.user._id;
+		string hash = "MinhaArvore:Parental:" + userId;
+
+		if (!PlayerPrefs.HasKey(hash))
+		{
+			PlaySound();
+			
+			AlertsService.makeAlert("Aviso", "Essa página é focada para estudantes do município. A maior parte do conteúdo aqui presente foi apresentado por tutores ou professores previamente em sala.", "Entendi");
 			PlayerPrefs.SetString(hash, STATUS_DONE);
 		}
 	}

@@ -866,7 +866,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mensagem
+  m_Text: Aguarde
 --- !u!114 &114695665824576112
 MonoBehaviour:
   m_ObjectHideFlags: 1

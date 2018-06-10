@@ -11,6 +11,17 @@ public static class TimelineService
         get { return _posts; }
     }
 
+    public static WWW RemovePost (Post post)
+    {
+    	WWWForm removeForm = new WWWForm ();
+
+		WebService.route = ENV.POSTS_ROUTE;
+		WebService.action = ENV.REMOVE_ACTION;
+		WebService.id = post._id.ToString();
+
+		return WebService.Post(removeForm);
+    }
+
     public static WWW UpdatePostPoints (Post post, int newPoints)
     {
     	WWWForm postForm = new WWWForm ();
@@ -18,7 +29,7 @@ public static class TimelineService
 		postForm.AddField ("points", post.points + newPoints);
 
 		WebService.route = ENV.POSTS_ROUTE;
-		WebService.action = "update";
+		WebService.action = ENV.UPDATE_ACTION;
 		WebService.id = post._id.ToString();
 
 		return WebService.Post(postForm);
