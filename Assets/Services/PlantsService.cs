@@ -19,7 +19,9 @@ public static class PlantsService
 	private static Plant _plant;
 	public static Plant plant { get { return _plant; } }
 
-	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string requesterPhone, string placeName, string sidewalkSize, int quantity, 
+	private static int DEFAULT_QUANTITY = 1;
+
+	public static WWW RequestTree (int typeID, string photoBase64, string plantName, string requesterName, string requesterPhone, string placeName, string sidewalkSize,
 								   string street, string number, string neighborhood, string city, string state, string complement, string zipcode, string locationType)
 	{
 		Debug.Log("photo: " + photoBase64.Substring(0, 32));
@@ -29,7 +31,7 @@ public static class PlantsService
 		Debug.Log("requester_name: " + requesterName);
 		Debug.Log("requester_phone: " + requesterPhone);
 		Debug.Log("place: " + placeName);
-		Debug.Log("quantity: " + quantity);
+		Debug.Log("quantity: " + DEFAULT_QUANTITY);
 
 		WWWForm requestForm = new WWWForm ();
 		requestForm.AddField ("_user", UserService.user._id);
@@ -38,7 +40,7 @@ public static class PlantsService
 		requestForm.AddField ("tree_name", plantName);
 		requestForm.AddField ("requester_name", requesterName);
 		requestForm.AddField ("requester_phone", requesterPhone);
-		requestForm.AddField ("quantity", quantity);
+		requestForm.AddField ("quantity", DEFAULT_QUANTITY);
 		requestForm.AddField ("place", placeName);
 
 		if (locationType == "GPS")

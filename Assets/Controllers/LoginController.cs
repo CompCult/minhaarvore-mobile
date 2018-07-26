@@ -18,9 +18,10 @@ public class LoginController : ScreenController
 			emailField.text = PlayerPrefs.GetString("MinhaArvore:Email");
 	}
 
-	private void SaveUser ()
+	private void SaveUser (string data)
 	{
 		PlayerPrefs.SetString("MinhaArvore:Email", emailField.text);
+		CacheService.Set("Auth", data);
 	}
 
 	public void Authenticate ()
@@ -41,7 +42,7 @@ public class LoginController : ScreenController
 
 		if (loginRequest.responseHeaders["STATUS"] == HTML.HTTP_200)
 		{
-			SaveUser();
+			SaveUser(loginRequest.text);
 			UserService.UpdateLocalUser(loginRequest.text);
 			yield return StartCoroutine(_GetUserPhoto());
 		}

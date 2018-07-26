@@ -10,7 +10,7 @@ public class RequestController : ScreenController
 	// Details
 	public GameObject sideWalkSizeObj;
 	public Dropdown plantTypesDropdown, placeDropdown;
-	public InputField plantName, requesterName, requesterPhone, quantityField, sideWalkSize;
+	public InputField plantName, requesterName, requesterPhone, sideWalkSize;
 
 	// Address
 	public GameObject manualAddressObj, gpsImageObj;
@@ -69,23 +69,6 @@ public class RequestController : ScreenController
 			CURRENT_GET_LOCATION = "MANUAL";
 			gpsImageObj.SetActive(false);
 			manualAddressObj.SetActive(true);
-		}
-	}
-
-	public void CheckQuantity ()
-	{
-		if (quantityField.text.Length >= 1)
-		{
-			int quantity = int.Parse(quantityField.text),
-				requestLimit = UserService.user.request_limit;
-
-			if (quantity > requestLimit)
-			{
-				string message = "Seu limite de mudas por pedido é de " + requestLimit + " mudas. Realize ações no aplicativo ou entre em contato com a SESUMA para aumentar seu limite.";
-
-				AlertsService.makeAlert("Pedido grande", message, "Entendi");
-				quantityField.text = requestLimit.ToString();
-			}
 		}
 	}
 
@@ -157,8 +140,7 @@ public class RequestController : ScreenController
 
 		string photoBase64 = camService.photoBase64;
 
-		int quantity = int.Parse(quantityField.text),
-			typeID = -1;
+		int typeID = -1;
 
 		string plant = plantName.text,
 			   requester = requesterName.text,
@@ -177,7 +159,7 @@ public class RequestController : ScreenController
 			if (type.name.Equals(plantTypesDropdown.captionText.text))
 				typeID = type._id;
 
-		WWW requestForm = PlantsService.RequestTree(typeID, photoBase64, plant, requester, phone, place, sidewalkSize, quantity,
+		WWW requestForm = PlantsService.RequestTree(typeID, photoBase64, plant, requester, phone, place, sidewalkSize,
 													street, number, neighborhood, city, state, complement, zipcode, CURRENT_GET_LOCATION);
 
 		while (!requestForm.isDone)
@@ -232,9 +214,6 @@ public class RequestController : ScreenController
 		
 		if (UserService.user.IsMinor() && !termsToggle.isOn)
 			message = "Você deve concordar com o termo de ciência de pedidos no Minha Árvore.";
-		
-		if (quantityField.text.Length < 1 || int.Parse(quantityField.text) < 1)
-			message = "Você deve pedir, pelo menos, uma planta no campo de quantidade.";
 
 		if (CURRENT_GET_LOCATION == "MANUAL")
 		{
