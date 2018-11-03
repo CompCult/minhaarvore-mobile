@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MissionController : ScreenController 
+public class MissionController : ScreenController
 {
 	public GameObject imageButton, audioButton, videoButton, textButton, geolocationButton;
 	public Button sendButton;
@@ -39,7 +39,7 @@ public class MissionController : ScreenController
 	{
 		string message = null;
 
-		if (currentAnswer != null) 
+		if (currentAnswer != null)
 		{
 			if (currentMission.has_image && currentAnswer.image == null)
 				message = "Você precisa registrar uma foto antes de enviar essa resposta.";
@@ -157,7 +157,7 @@ public class MissionController : ScreenController
 				LoadView("Missions");
 			}
 		}
-		else 
+		else
 		{
 			if (responseRequest.responseHeaders["STATUS"] == HTML.HTTP_400)
 				AlertsService.makeAlert("Senha incorreta", "Por favor, verifique se inseriu corretamente o e-mail e senha.", "OK");
@@ -217,7 +217,7 @@ public class MissionController : ScreenController
 
 			FillGroupsDropdown();
 		}
-		else 
+		else
 		{
 			AlertsService.makeAlert("Falha na conexão", "Essa é uma missão em grupo e não pudemos listar seus grupos.", "");
 			yield return new WaitForSeconds(3f);
@@ -229,9 +229,10 @@ public class MissionController : ScreenController
 
 	private int GetSelectedGroupId (string groupName)
 	{
-		foreach (Group group in GroupsService.groups)
-			if (group.name == groupName)
-				return group._id;
+		if (GroupsService.groups != null && GroupsService.groups.Length > 0)
+			foreach (Group group in GroupsService.groups)
+				if (group.name == groupName)
+					return group._id;
 
 		return 0;
 	}
